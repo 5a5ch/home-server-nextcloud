@@ -19,18 +19,25 @@ zahlreiche Dokumentationen und eine Community.
 Hürden: aus früheren kleinen Projekten war mir von Anfang an klar, dass das trotzdem nicht einfach sein würde, da ich 
 kaum über Kenntnisse im Umgang mit Docker, Linux, Kommandozeile, Datenbanken, Sicherheit, Skripten verfüge. Das heißt
 ich würde mich mit jedem Thema auseinandersetzen müssen, recherchieren, Code-Zeilen finden und anpassen und durch viel 
-Trial-&-Error probieren müssen um ein System aufzusetzen, dass den Anforderungen genügt. Ja, und welche Anforderungen hat
-so ein System überhaupt? Also definierte ich erste Anforderungen
-Anforderung:
-- sicher
-- zuverlässig
-- verfügbar
+Trial-&-Error probieren müssen um ein System aufzusetzen, dass den Anforderungen genügt. 
+
+### Anforderungen
+Ja, und welche Anforderungen hat so ein System überhaupt? Ich definiere also Anforderungen.
+
+- Sicherheit
+- Zuverlässigkeit
+- Verfügbarkeit
 - von Außen erreichbar
 - mehrere Nutzer
 - Kompatibilität mit verschiedenen OS
 - Backups
-- Updates 
+- Updates
+- Monitoring
+- Erweiterbarkeit
 
+### Recherche und erste Schritte
+Ich begann also mit ersten Recherchen zu den verschiedenen Themen und laß mich durch Artikel und Forenbeiträge. Ich nahm
+Suchbegriffe, tippte sie in die Suchmaschine und ließ von dort an treiben.
 
 ### Hardware
 ### Software und Versionen
