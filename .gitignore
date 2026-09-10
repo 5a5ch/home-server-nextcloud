@@ -1,0 +1,87 @@
+# ==========================================
+# Geheimnisse und lokale Konfiguration
+# ==========================================
+
+.env
+.env.*
+!.env.example
+secrets/
+*.secret
+
+# ==========================================
+# Private Schlüssel und Zertifikate
+# ==========================================
+
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+
+# ==========================================
+# Nextcloud-Daten und Datenbanken
+# ==========================================
+
+nextcloud-data/
+data/
+database/
+mysql/
+mariadb/
+postgres/
+*.sqlite
+*.sqlite3
+*.db
+
+# ==========================================
+# Backups und Protokolle
+# ==========================================
+
+backup/
+backups/
+*.log
+logs/
+
+# ==========================================
+# Temporäre Dateien
+# ==========================================
+
+tmp/
+temp/
+*.tmp
+*.swp
+*~
+
+# ==========================================
+# Betriebssystem-Dateien
+# ==========================================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# Editor-Einstellungen
+# ==========================================
+
+.vscode/
+.idea/
+
+# ==========================================
+# Falls später JavaScript oder Node.js
+# verwendet wird
+# ==========================================
+
+node_modules/
+.next/
+dist/
+build/
+
+# ==========================================
+# Falls später Python verwendet wird
+# ==========================================
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
