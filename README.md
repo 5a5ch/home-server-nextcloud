@@ -37,7 +37,8 @@ Ja, und welche Anforderungen hat so ein System überhaupt? Ich definiere also An
 
 ### Recherche und erste Schritte
 Ich begann also mit ersten Recherchen zu den verschiedenen Themen und laß mich durch Artikel und Forenbeiträge. Ich nahm
-Suchbegriffe, tippte sie in die Suchmaschine und ließ von dort an treiben.
+Suchbegriffe, tippte sie in die Suchmaschine und ließ von dort an treiben. Ich laß über Nutzererfahrungen, Hardware-Empfehlungen
+und hoffte auch Komplett-Anleitungen, die mich später durch die Einrichtung führen sollten.
 
 ### Hardware
 ### Software und Versionen
