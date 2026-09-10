@@ -1,6 +1,8 @@
 # ==========================================
 # Geheimnisse und lokale Konfiguration
 # ==========================================
+# Damit werden echte Konfigurationsdateien mit Passwörtern ignoriert. Eine Beispiel-Datei darf aber 
+# später trotzdem hochgeladen werden:
 
 .env
 .env.*
