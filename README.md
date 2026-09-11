@@ -53,7 +53,7 @@ Für einige Test und zum Ausprobieren war das akzeptabel, aber für den spätere
 
 ### Hardware
 Grundlegenden Fragen waren: 
-- "welche Hardware benötige ich?"
+- "welche Hardware benötige ich?"<br>
   -> Es ist nicht die neuste Hardware nötig. Aus Tutorials, Forenbeiträgen und Artikeln geht klar hervor, dass ältere Hardware sich heute
   immer noch gut für ein Home-Server-Projekt eignet. Ich entschloss mich zuerst für einen gebrauchten MacMini. Für 50 € fand ich bei Kleinanzeigen
   ein Modell aus 2013 mit ein i7-Quad-Core-Prozessor, 8 GB RAM und einer SSD. Leider stellte sich nach dem Kauf heraus, dass eine Neuinstallation von 
