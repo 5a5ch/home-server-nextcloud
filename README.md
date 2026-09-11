@@ -63,29 +63,61 @@ Grundlegenden Fragen waren:
   war das "leider" nicht möglich. Apple hat hier gut gearbeitet und so soll es auch sein! Ich stieß bei meiner Recherche auf einige "Kaufmöglichkeiten", die
   versprachen den Schutz auszuhebeln. Allerdings für einen Preis jenseits von 100 €. Das war das Gerät nicht wert und mir erschienen die Angebote auch etwas
   dubios. Nachdem ich hier in eine Sackgasse kam, entschloss ich mich die Einzelteile auszubauen und zu verkaufen, was mir auch gelang. RAM, SSD und Logigboard
-  einzeln verkauft, brachten mir ca. 45 €. Mein Verlust hielt sich in Grenzen.
-
-  Beim nächsten Anlauf suchte ich gezielt nach ThinClients. Ich stieß auf ein Lenovo ThinkCentre für 35 € und handelte den Versand inklusive aus.
-  Spezifikationen:
-  Intel(R) Core(TM) i5-3470T CPU @ 2.90GHz
-  8GiB System Memory
-  integrierte Grafik-Einheit
-  ohne SSD/HDD
-  Ich setzte eine alte 120 GB OCZ Vertex ein und schon war die Hardware für das System bereit.
-
+  einzeln verkauft, brachten mir ca. 45 €. Mein Verlust hielt sich in Grenzen.<br>
+  <br>
+  Beim nächsten Anlauf suchte ich gezielt nach ThinClients. Ich stieß auf ein Lenovo ThinkCentre für 35 € und handelte den Versand inklusive aus.<br>
+  Spezifikationen:<br>
+  Intel(R) Core(TM) i5-3470T CPU @ 2.90GHz<br>
+  8GiB System Memory<br>
+  integrierte Grafik-Einheit<br>
+  ohne SSD/HDD<br>
+  Ich setzte eine alte 120 GB OCZ Vertex ein und schon war die Hardware für das System bereit.<br>
   Speicher: Ich habe eine Schublade voll mit Festplatten in verschiedenen Größen und entschied mich mit einer alten 1TB Platte in einem externen Gehäuse und
-  über USB angeschlossen zu beginnen.
-  
-- "Welche Anforderungen stellt die Software?"
+  über USB angeschlossen zu beginnen.<br>
+  <br>
+- "Welche Anforderungen stellt die Software?"<br>
   Ich laß überall, dass Linux generell ein wenig leistunghungriges System ist. Es wird stetig gewartet und bekommt Updateas. Es ist frei. Also wählte ich
-  Ubuntu ohne graphische Oberfläche. Docker und Nextcloud sollten der Hardware keine Probleme bereiten. Das hatte ich mehrmals im Netz abgefragt.
-  
-- "Wie zukunftsfähig/erweiterungsfähig soll mein System sein?"
+  Ubuntu ohne graphische Oberfläche. Docker und Nextcloud sollten der Hardware keine Probleme bereiten. Das hatte ich mehrmals im Netz abgefragt.<br>
+  <br>
+- "Wie zukunftsfähig/erweiterungsfähig soll mein System sein?"<br>
   Zu dem Zeitpunkt hatte ich noch keine Zukunftsfolgepläne. Aber ich ging davon aus, dass sich neben Nextcloud sicher noch der ein oder andere Dienst
-  installieren ließe. Erst mit den späteren Recherchen stieße auf weitere Inspirationen wie Smart-Home, Pihole, Email-Server
-- "Welche laufenden Kosten entstehen durch den Stromverbrauch?"
+  installieren ließe. Erst mit den späteren Recherchen stieße auf weitere Inspirationen wie Smart-Home, Pihole, Email-Server. Für ein KI-Projekt, was
+  ich in Zukunft irgendwann noch starten werde, ist die Hardware nicht brauchbar.<br>
+  <br>
+- "Welche laufenden Kosten entstehen durch den Stromverbrauch?"<br>
+  Zunächst einmal stellte sich die Frage wie man das überhaupt berechnet? Rechnet man mit annähernd Leerlauf-Verbrauch? Unter Volllast wird das System eher
+  nicht laufen. Finde ich überhaupt Werte für die CPU?<br>
+  Der Prozesser wird mit 35-W-TDP angegeben. Das ist natürlich erst Mal ein Wert, der sich schwer in Relation setzen lässt. Also befragte ich KI und ließ mir
+  folgende Schätzung geben.<br>
+  Idle, keine Zugriffe ->	etwa 10–15 W<br>
+  Normalbetrieb mit Docker/Nextcloud -> etwa 12–20 W<br>
+  Kurzzeitige Lastspitzen -> etwa 25–40 W<br>
+  Dauerhafte Volllast	-> etwa 35–50 W<br>
+  <br>
+  Ich nahm einen Wert von 15W zwischen Idle und Normalbetrieb an.<br>
+  Hinzu kommt die 3,5" HDD, die in einer uralten ICY-Box steckt. Schätzungen der KI kamen je nach Zugriffshäufigkeit auf 4-10 Watt. Ich einigte mich
+  mit mir auf die Mitte von 7 Watt.<br>
+  
+  Das errechnete ich:<br>
+  Jahresverbrauch: (0,015KW + 0,007W) * 24h * 365 * 0,30 €/KWh = 57,82 €<br>
+  Da ich ein Balkonkraft habe, sollte der Stromverbrauch tagsüber größtenteils gedeckt sein. Und wenn man davon ausgeht, dass der Verbrauch
+  nachts eher Richtung Idle geht, so sollten die Kosten in Realität definitiv niedriger ausfallen.<br>
+  Ich habe mich mit der Frage des Stromverbrauchs eine ganze Zeit beschäftigt. Ich wollte definitiv KEINEN zusätzlichen größeren Verbraucher im Haushalt
+  haben und bei der Hardware-Recherche muss man genau das immer abfragen. Denn die Softwareanforderungen lassen sich mit wirklich viel alter Hardware
+  bedienen, aber alte CPU sind aus verschiedenen Gründen nicht gerade stromsparend und die Jahresrechnung kann schnell um einen dreistelligen Betrag steigen.
+  An der Stelle lohnt es sich zu rechnen. Denn moderne Hardware, also moderne CPU, gerade Mobilprozessoren, sind für so ein Projekt ideal. Und damit komme ich
+  zur nächsten Frage.<br>
+  <br>
+- "Welches Budget steht mir zu Verfügung?"<br>
+  Ehrlich gesagt wollte ich nicht viel Geld ausgeben. Es ist in erster Linie ein Versuch von dem ich nicht weiß wie gut und zuverlässig alles laufen wird. Ich
+  konnte zu Beginn nicht abschätzen, welche Hürden und Stolpersteine mich noch erwarten und ob das Ganze wirklich nachhaltig funktionieren wird.
+  Die Kosten der Hardware habe ich ja oben schon erwähnt und dabei wollte ich es vorerst auch belassen.
+  Für den Anfang: Keep it cheap!
+  Sehe ich später, dass alles gut läuft, kann ich die Rechnung nochmal überdenken. Ein sparsames Gerät das unter 5 Watt verbraucht und dazu eine SSD für Daten,
+  die über USB mit Strom versorgt wird, würde die laufenden Stromkosten nochmal deutlich reduzieren, was sich über die Zeit aufrechnen kann.<br>
+  <br>
 - "Welche Software/OS nutze ich überhaupt?"
-- "Welches Budget steht mir zu Verfügung?"
+
 - "Gibt es Empfehlungen aus Foren oder Artikeln?"
 
 ### Software und Versionen
