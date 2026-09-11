@@ -14,7 +14,7 @@ Ich hatte bereits Erfahrung gesammelt mit Nextcloud (ehemals Owncloud), das ich 
 und genutzt hatte. Auch aus Firmenkontext kannte ich die App.
 Außerdem bietet Nextcloud weitere nützliches Tools wie Passwörter-Verwaltung, Kalender oder Notizen. Alles Dienste, die ich
 aktuell von anderen Anbietern nutze und die zu meinen unabdingbaren täglichen Werkzeugen gehören.
-Weitere Pluspunkte sind, dass Nextcloud ein europäisches Produkt ist und zusätzlich noch Open-Source. Es gibt außerdem 
+Weitere Pluspunkte sind, dass Nextcloud ein europäisches, genauer gesagt ein deutsches Produkt ist und zusätzlich noch Open-Source. Es gibt außerdem 
 zahlreiche Dokumentationen und eine Community.
 Da Nextcloud-Instanzen mehrere Nutzer zulassen, schwebte mir auch vor den Zugang für den Familienkreis zu ermöglichen um 
 beispielsweise eine automatische Foto-Synchronisation vom Smartphone zu ermöglichen.
