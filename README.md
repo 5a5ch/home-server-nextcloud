@@ -16,6 +16,8 @@ Außerdem bietet Nextcloud weitere nützliches Tools wie Passwörter-Verwaltung,
 aktuell von anderen Anbietern nutze und die zu meinen unabdingbaren täglichen Werkzeugen gehören.
 Weitere Pluspunkte sind, dass Nextcloud ein europäisches Produkt ist und zusätzlich noch Open-Source. Es gibt außerdem 
 zahlreiche Dokumentationen und eine Community.
+Da Nextcloud-Instanzen mehrere Nutzer zulassen, schwebte mir auch vor den Zugang für den Familienkreis zu ermöglichen um 
+beispielsweise eine automatische Foto-Synchronisation vom Smartphone zu ermöglichen.
 Hürden: aus früheren kleinen Projekten war mir von Anfang an klar, dass das trotzdem nicht einfach sein würde, da ich 
 kaum über Kenntnisse im Umgang mit Docker, Linux, Kommandozeile, Datenbanken, Sicherheit, Skripten verfüge. Das heißt
 ich würde mich mit jedem Thema auseinandersetzen müssen, recherchieren, Code-Zeilen finden und anpassen und durch viel 
@@ -50,7 +52,52 @@ Es stellte sich allerdings sehr schnell raus, dass die Hardware komplett überfo
 Für einige Test und zum Ausprobieren war das akzeptabel, aber für den späteren Betrieb weder brauchbar noch praktikabel.
 
 ### Hardware
+Grundlegenden Fragen waren: 
+- "welche Hardware benötige ich?"
+  -> Es ist nicht die neuste Hardware nötig. Aus Tutorials, Forenbeiträgen und Artikeln geht klar hervor, dass ältere Hardware sich heute
+  immer noch gut für ein Home-Server-Projekt eignet. Ich entschloss mich zuerst für einen gebrauchten MacMini. Für 50 € fand ich bei Kleinanzeigen
+  ein Modell aus 2013 mit ein i7-Quad-Core-Prozessor, 8 GB RAM und einer SSD. Leider stellte sich nach dem Kauf heraus, dass eine Neuinstallation von 
+  Ubuntu oder macOS nicht möglich ist, da das Gerät mit einem UEFI-Passwort versehen war. Ich kontaktierte den Verkäufer, der mir aber glaubhaft versicherte
+  das er davon nichts und wusste und das Gerät selbst vor Jahren gebraucht gekauft hatte. Im normalen Betrieb wird dieses Passwort nicht abgefragt - deshalb
+  wusste er nicht davon. Ich recherchierte also wie ich diesen Passwort-Schutz umgehen könne bzw. ob ein komplettes Werksreset möglich ist. In meinem Fall
+  war das "leider" nicht möglich. Apple hat hier gut gearbeitet und so soll es auch sein! Ich stieß bei meiner Recherche auf einige "Kaufmöglichkeiten", die
+  versprachen den Schutz auszuhebeln. Allerdings für einen Preis jenseits von 100 €. Das war das Gerät nicht wert und mir erschienen die Angebote auch etwas
+  dubios. Nachdem ich hier in eine Sackgasse kam, entschloss ich mich die Einzelteile auszubauen und zu verkaufen, was mir auch gelang. RAM, SSD und Logigboard
+  einzeln verkauft, brachten mir ca. 45 €. Mein Verlust hielt sich in Grenzen.
+
+  Beim nächsten Anlauf suchte ich gezielt nach ThinClients. Ich stieß auf ein Lenovo ThinkCentre für 35 € und handelte den Versand inklusive aus.
+  Spezifikationen:
+  Intel(R) Core(TM) i5-3470T CPU @ 2.90GHz
+  8GiB System Memory
+  integrierte Grafik-Einheit
+  ohne SSD/HDD
+  Ich setzte eine alte 120 GB OCZ Vertex ein und schon war die Hardware für das System bereit.
+
+  Speicher: Ich habe eine Schublade voll mit Festplatten in verschiedenen Größen und entschied mich mit einer alten 1TB Platte in einem externen Gehäuse und
+  über USB angeschlossen zu beginnen.
+  
+- "Welche Anforderungen stellt die Software?"
+  Ich laß überall, dass Linux generell ein wenig leistunghungriges System ist. Es wird stetig gewartet und bekommt Updateas. Es ist frei. Also wählte ich
+  Ubuntu ohne graphische Oberfläche. Docker und Nextcloud sollten der Hardware keine Probleme bereiten. Das hatte ich mehrmals im Netz abgefragt.
+  
+- "Wie zukunftsfähig/erweiterungsfähig soll mein System sein?"
+  Zu dem Zeitpunkt hatte ich noch keine Zukunftsfolgepläne. Aber ich ging davon aus, dass sich neben Nextcloud sicher noch der ein oder andere Dienst
+  installieren ließe. Erst mit den späteren Recherchen stieße auf weitere Inspirationen wie Smart-Home, Pihole, Email-Server
+- "Welche laufenden Kosten entstehen durch den Stromverbrauch?"
+- "Welche Software/OS nutze ich überhaupt?"
+- "Welches Budget steht mir zu Verfügung?"
+- "Gibt es Empfehlungen aus Foren oder Artikeln?"
+
 ### Software und Versionen
+Ziel ist es Nextcloud zum laufen zu bringen. Das ist auf vielen Wegen möglich. Ich entschied mich nach einiger Recherche für folgenden Unterbau:
+- Ubuntu ohne GUI -> Zugriff über SSH von meinem Hauptrechner über das lokale Netz.
+- Docker
+- Nextcloud im Container
+- Reverse Proxy
+- Kuma Monitoring
+
+Alle Applikationen in der zur Zeit der Installation aktuellsten Version.
+
 ### Netzwerkarchitektur
 ### Installation und Einrichtung
 ### Nextcloud-Funktionen
