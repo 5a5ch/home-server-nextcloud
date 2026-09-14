@@ -172,6 +172,13 @@ Zukünftig ist für mich interessant
 - eMail-Server
 
 ### Sicherheitsmaßnahmen
+Ja, das Thema Sicherheit ist vielleicht das Wichtigste. Während Dienste mal nicht funktionieren dürfen oder irgendwelche nervigen Sync-Probleme mit ständigen Time-Out-Meldungen nerven können, sollte sicherheitstechnisch nichts schief gehen, da ja es um meine persönlichen Daten geht. Das Thema KI und Sicherheit sollte man auch mit Vorsicht genießen. Nicht jede Empfehlung und Anleitung, welche die KI vorschlägt ist automatisch sicher! Ein Thema welches in Bezug auf Vibe-Coding für Anfänger, also das klassische Beispiel des jungen Unternehmers, der mit Vibe-Coding seine Internetpräsenz aufbaut und später stellt sich heraus, dass die Kundendatenbank offen im Netz lag. DSGVO-Horror-Szenario.<br>
+Nextcloud selbst bringt ein paar Werkzeuge  mit.<br>
+- Zwei-Faktor-Authentifizierung 2FA
+- Log-Files
+<br>
+Mit Uptime-Kuma habe ich ein Tool entdeckt, dass es ermöglicht Regeln und Abfragen zu erstellen und diese zu überwachen.<br>
+Soll lassen sich Zugriffe und Anmeldeversuche überwachen.
 ### Backup- und Wiederherstellungskonzept
 ### Monitoring und Wartung
 ### Probleme und Lösungen
