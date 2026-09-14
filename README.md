@@ -142,7 +142,9 @@ Aber mit diesem Projekt bot sich mir eine erste und gute Gelegenheit mich mit KI
 KI ist ein mächtiges Assistenz-System, mit dem man viel Lernen kann. Man kann aber auch einfach schnell sein und nicht hinterfragen, es wird schon irgendwie laufen. Das mag ich persönlich nicht. Ich fühle mich nicht wohl, wenn ich nicht grundlegend verstehe, was ich mache und mich nicht bewusst entscheide. Ich habe schnell festgestellt, dass es sich lohnt lange und ausführlich zu fragen. Die KI kennt keine Ungeduld und keine dummen Fragen!!! Anderherum war ich noch nie um dumme Fragen verlegen ;-)
 
 ### Netzwerkarchitektur
-Der Server mit der USB-Festplatte steht im Wohnzimmer und ist kabelgebunden an einen Mesh-Repeater, der wiederum das WLAN-Signal vom Router aus dem Stockwerk darunter verstärkt,  angeschlossen. Ins Internet geht es über den Router. Die IP-Adresse wird vom Router über DCHP vergeben. Der Router ist so eingestellt, dass er diese Adresse dauerhaft an den Server vergibt. Zugriff auf den Server sollen später ein Laptop, ein stationärer Rechner und vier Smartphones haben. Insgesamt vier Benutzer. Zugriff soll über außen erfolgen. Darauf gehe ich im Detail später ein. Auf dem Server wird ein Reverse Proxy laufen, der die Anfragen von außen an die entsprechenden Dienste auf dem Server weiterleiten wird. Auf dem Router wird eine Portweiterleitung eingerichtet, die auf den Server zeigt. 
+Der Server mit der USB-Festplatte steht im Wohnzimmer und ist kabelgebunden an einen Mesh-Repeater, der wiederum das WLAN-Signal vom Router aus dem Stockwerk darunter verstärkt,  angeschlossen. Ins Internet geht es über den Router. Die IP-Adresse wird vom Router über DCHP vergeben. Der Router ist so eingestellt, dass er diese Adresse dauerhaft an den Server vergibt. Zugriff auf den Server sollen später ein Laptop, ein stationärer Rechner und vier Smartphones haben. Insgesamt vier Benutzer. Zugriff soll über außen erfolgen. Darauf gehe ich im Detail später ein. Auf dem Server wird ein Reverse Proxy laufen, der die Anfragen von außen an die entsprechenden Dienste auf dem Server weiterleiten wird. Auf dem Router wird eine Portweiterleitung eingerichtet, die auf den Server zeigt. <br>
+
+[NETZWERKDIAGRAMM einfügen]
 
 *welche Geräte beteiligt sind*
 *wie der Server mit dem Netzwerk verbunden ist*
@@ -156,6 +158,18 @@ Der Server mit der USB-Festplatte steht im Wohnzimmer und ist kabelgebunden an e
 
 
 ### Nextcloud-Funktionen
+Nextcloud bietet verschiedene Funktionen und Dienste. Es gibt einen App-Store, der nützliche Erweiterungen bietet.<br>
+Ich nutze aktuell
+**- Datei-Synchronisierung:** private Daten aus dem Alltag behalten ich verfügbar auf dem Smartphone, Laptop und meinem Schreibtisch-Rechner. Da ich auf dem Laptop sämtliche Daten in die Cloud synchronisiere, entsteht auf meinem Hauptrechner automatisch eine Sicherung neuer Daten, die auf dem Laptop anfallen. Ein praktischer Nebeneffekt, der natürlich nicht die regelmäßige Datensicherung ersetzt.
+**- automatischer Photoupload vom Smartphone:** Speicherplatz auf Smartphones ist teuer und begrenzt und bei uns in der Familie belegen Photos immer einen Großteil des Speichers. Ist die Nextcloud-App auf dem Smartphone installiert, bietet die Photos-App ein automatischen Upload der Foto- und Videomediathek an. Das bringt zwei Vorteile. Zum einen sind die Photos direkt als Kopie gesichert und zum anderen kann ich auf dem Smartphone einfach und schnell Photos löschen und Speicher freigeben.
+**- Notizen (im Test):** Notizen sind mein Alltagshelfer und ich mache mir ständig Notizen aller Art. Entsprechend ist die Verfügbarkeit sehr wichtig für mich. Mittlerweile habe ich alle meine Notizen nach Nextcloud umgezogen und nutze nur noch diesen Dienst.
+**- Passwort-Verwaltung (im Test):** Ich nutze generell einen Passwort-Manager. Ohne diesen näher zu benennen, muss ich kaum betonen, dass die Sicherheit und die Funktion sehr, sehr wichtig sind. Bevor ich hier einen kompletten Umzug mache, werde ich den von Nextcloud angebotenen Dienst näher beleuchten und ausführlich testen. Das habe ich bis jetzt nicht getan. Prinzipiell ist die App am Handy installiert und über die Webobefläche ist der Passwort-Manager am PC zugänglich.
+**- Kontakte (im Test):** 
+- integriertes Open-Office
+
+Zukünftig ist für mich interessant
+- KI-Erweiterung/Integration
+- eMail-Server
 ### Sicherheitsmaßnahmen
 ### Backup- und Wiederherstellungskonzept
 ### Monitoring und Wartung
