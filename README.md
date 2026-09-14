@@ -199,11 +199,17 @@ Aus zwei einfachen Gründen benötigt es ein Konzept für Backups.<br>
 1) habe ich keine Lust wieder von vorne anzufangen, falls meine System-Platte abraucht. Und...<br>
 2) möchte ich meine Daten nicht verlieren.<br
 <br>
-Dieser Punkt ist in meiner Konfiguration noch nicht abgeschlossen und weiter ausbaubar. Backups erstelle zwar regelmäsig, jedoch bis jetzt manuell. Ich nutze rsync über das Terminal.
-1) erstelle ich regelmäßig komplette Abbilder der Systemfestplatte
-2) kopiere ich die Nextcloud-Festplatte regelmäßig
+Dieser Punkt ist in meiner Konfiguration noch nicht abgeschlossen und wird zukünftig weiter ausgebaut. Backups erstelle zwar regelmäsig, jedoch bis jetzt manuell. Ich nutze rsync über das Terminal.
+1) Ich erstelle regelmäßig komplette Abbilder der Systemfestplatte auf die eingehängte USB-Festplatte.<br>
+Ich behalte immer die letzten drei Abbilder. Ältere Abbilder lösche ich zur Zeit händisch. Ein manuelles Wieder-Einspielen habe ich bisher nicht getestet.
+sudo dd if=/dev/sda bs=4M conv=sync,noerror status=progress | gzip | sudo tee /mnt/USB-FESTPLATTE/system-image/system-$(date +%Y-%m-%d).img.gz > /dev/null
+<br>
+status=progress ->Zeigt den Fortschritt des Kopierprozesses an<br>
 
-Beide Kopien schiebe ich über das lokale Netzwerk auf meine Datenfestplatte. Die Datenfestplatte selbst sichere ich widerum regelmäßig auf einer HDD gleicher Größe 1:1.
+2) Ich kopiere die Nextcloud-Festplatte regelmäßig 1:1 auf einen anderen Ordner im Netzwerk<br>
+sudo rsync -aHAX --info=progress2 /mnt/NEXTCLOUD-FESTPLATTE/ /mnt/NETZWERKORDNER/  <br>
+Die NEXTCLOUD-FESTPLATTE und NETZWERKORDER sind dauerhaft im System eingehängt. <br>
+
 
 ### Monitoring und Wartung
 - Uptime Kuma:
@@ -211,6 +217,7 @@ Beide Kopien schiebe ich über das lokale Netzwerk auf meine Datenfestplatte. Di
   b) Benachrichting falls sicherheitsrelevante Updates für Ubuntu verfügbar sind. 
   c) Benachrichtigung ob Container und Cronjob laufen
   d) Benachrichtigung falls Nextcloud-Dienst nicht online/erreichbar
+  e) Benachrichtigung falls die Festplatten-Belegung über 75% ansteigt.
 
 ### Probleme und Lösungen
 ### Was ich dabei gelernt habe
