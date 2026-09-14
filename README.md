@@ -177,6 +177,9 @@ Nextcloud selbst bringt ein paar Werkzeuge  mit.<br>
 - Zwei-Faktor-Authentifizierung 2FA
 - Log-Files
 <br>
+- Zertifikate
+- Port 443, HTTPS
+- max. 5 Anmeldeversuche -> Sperrung der IP
 Mit Uptime-Kuma habe ich ein Tool entdeckt, dass es ermöglicht Regeln und Abfragen zu erstellen und diese zu überwachen.<br>
 Soll lassen sich Zugriffe und Anmeldeversuche überwachen.<br>
 Sicherheitsrelevante System-Updates müssen regelmäßig geprüft und ei gespielt werden. Auch dabei hilft Kuma. <br>
@@ -187,7 +190,19 @@ Es braucht definitiv ein solches Konzept.<br>
 1) habe ich keine Lust wieder von vorne anzufangen, falls meine System-Platte abraucht. Und...<br>
 2) möchte ich meine Daten nicht verlieren.<br
 
+Dieser Punkt ist in meiner Konfiguration noch ausbaubar. Backups erstelle zwar regelmäsig, jedoch manuell. Ich nutze rsync über das Terminal.
+1) erstelle ich regelmäßig komplette Abbilder der Systemfestplatte
+2) kopiere ich die Nextcloud-Festplatte regelmäßig
+
+Beide Kopien schiebe ich über das lokale Netzwerk auf meine Datenfestplatte. Die Datenfestplatte selbst sichere ich widerum regelmäßig auf einer HDD gleicher Größe 1:1.
+
 ### Monitoring und Wartung
+- Uptime Kuma:
+  a) Benachrichtigung über fehlgeschlagene Anmeldeversuche inkl. Standort
+  b) Benachrichting falls sicherheitsrelevante Updates für Ubuntu verfügbar sind. 
+  c) Benachrichtigung ob Container und Cronjob laufen
+  d) Benachrichtigung falls Nextcloud-Dienst nicht online/erreichbar
+
 ### Probleme und Lösungen
 ### Was ich dabei gelernt habe
 ### Mögliche zukünftige Erweiterungen
