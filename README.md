@@ -1,7 +1,8 @@
 # home-server-nextcloud
 Ich baue meinen eigenen Nextcloud-Server um meine Daten zu Hause zu behalten! Das war der Anfang und die Idee des Projekts.<br>
 Ich habe beschlossen den Projektverlauf hier nachträglich zu dokumentieren und dabei vorallem auf meine Gedanken und Überlegungen zu den einzelnen Schritten einzugehen.
-Ich werde hier nicht viele kryptische Zeilen aus irgendwelchen NANO-Config-Files einstellen, da ich selbst zu wenig davon verstehe. Vielmehr geht mir darum, meinen
+Ich werde hier nicht viele kryptische Zeilen aus irgendwelchen NANO-Config-Files einstellen, da ich selbst zu wenig davon verstehe. 
+Es handelt sich also nicht um eine Anleitung, davon gibt es genug da draußen im Netz, vielmehr geht mir darum, meinen
 eigenen Lernprozess zum grundlegenden Verständnis darzustellen.
 
 ## PROJEKTÜBERSICHT
