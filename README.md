@@ -147,6 +147,7 @@ KI ist ein mächtiges Assistenz-System, mit dem man viel Lernen kann. Man kann a
 
 ### Netzwerkarchitektur
 Der Server mit der USB-Festplatte steht im Wohnzimmer und ist kabelgebunden an einen Mesh-Repeater angeschlossen, der wiederum das WLAN-Signal vom Router aus dem Stockwerk darunter verstärkt. Ins Internet geht es über den Router. Die interne IP-Adresse wird vom Router über DCHP vergeben. Der Router ist so eingestellt, dass er diese Adresse dauerhaft an den Server vergibt. Zugriff auf den Server sollen später ein Laptop, ein stationärer Rechner und vier Smartphones haben. Insgesamt vier Benutzer. Der Zugriff soll über außen erfolgen. Darauf gehe ich im Detail später ein. Auf dem Server wird ein Reverse Proxy laufen, der die Anfragen von außen an die entsprechenden Dienste auf dem Server weiterleiten wird. Auf dem Router wird eine Portweiterleitung eingerichtet, die auf den Server zeigt. <br>
+Den Server selbst konfiguriere ich über das Terminal via SSH von meinem Hauptrechner über das lokale Netzwerk.
 
 [NETZWERKDIAGRAMM einfügen]
 
@@ -185,7 +186,7 @@ Zukünftig ist für mich interessant
 **- eMail-Server**
 
 ### Sicherheitsmaßnahmen
-Ja, das Thema Sicherheit ist vielleicht das Wichtigste. Während Dienste mal nicht funktionieren dürfen oder irgendwelche nervigen Sync-Probleme mit ständigen Time-Out-Meldungen nerven können, sollte sicherheitstechnisch nichts schief gehen, da ja es um meine persönlichen Daten geht. Das Thema KI und Sicherheit sollte man auch mit Vorsicht genießen. Nicht jede Empfehlung und Anleitung, welche die KI vorschlägt ist automatisch sicher! Ein Thema welches in Bezug auf Vibe-Coding für Anfänger, also das klassische Beispiel des jungen Unternehmers, der mit Vibe-Coding seine Internetpräsenz aufbaut und später stellt sich heraus, dass die Kundendatenbank offen im Netz lag. DSGVO-Horror-Szenario. An anderen Stellen lese ich, ein offener Port am Router wie es für meinen Home-Server nötig ist, ist generell ein Einfallstor und dort draussen scannen Bots ständig und suchen solche Tore. <br>
+Ja, das Thema Sicherheit ist das Wichtigste. Während Dienste mal nicht funktionieren dürfen oder irgendwelche nervigen Sync-Probleme mit ständigen Time-Out-Meldungen nerven können, sollte sicherheitstechnisch nichts schief gehen, da ja es um meine persönlichen Daten geht. Das Thema KI und Sicherheit sollte man auch mit Vorsicht genießen. Nicht jede Empfehlung und Anleitung, welche die KI vorschlägt ist automatisch sicher! Ein Thema welches in Bezug auf Vibe-Coding für Anfänger, also das klassische Beispiel des jungen Unternehmers, der mit Vibe-Coding seine Internetpräsenz aufbaut und später stellt sich heraus, dass die Kundendatenbank offen im Netz lag. DSGVO-Horror-Szenario. An anderen Stellen lese ich, ein offener Port am Router wie es für meinen Home-Server nötig ist, ist generell ein Einfallstor und dort draussen scannen Bots ständig und suchen solche Tore. <br>
 <br>
 Nextcloud selbst bringt ein paar Werkzeuge  mit.<br>
 - Zwei-Faktor-Authentifizierung 2FA
@@ -206,15 +207,17 @@ Aus zwei einfachen Gründen benötigt es ein Konzept für Backups.<br>
 2) Ich möchte ich meine Daten nicht verlieren!<br
 <br>
 Dieser Punkt ist in meiner Konfiguration noch nicht abgeschlossen und wird zukünftig weiter ausgebaut. Backups erstelle zwar regelmäsig, jedoch bis jetzt manuell. Ich nutze rsync über das Terminal.
-1) Ich erstelle regelmäßig komplette Abbilder der Systemfestplatte auf die eingehängte USB-Festplatte.<br>
+a) Ich erstelle regelmäßig komplette Abbilder der Systemfestplatte auf die eingehängte USB-Festplatte.<br>
 Ich behalte immer die letzten drei Abbilder. Ältere Abbilder lösche ich zur Zeit händisch. Ein manuelles Wieder-Einspielen habe ich bisher nicht getestet.
 sudo dd if=/dev/sda bs=4M conv=sync,noerror status=progress | gzip | sudo tee /mnt/USB-FESTPLATTE/system-image/system-$(date +%Y-%m-%d).img.gz > /dev/null
 <br>
 status=progress ->Zeigt den Fortschritt des Kopierprozesses an<br>
 
-2) Ich kopiere die Nextcloud-Festplatte regelmäßig 1:1 auf einen anderen Ordner im Netzwerk<br>
+b) Ich kopiere die Nextcloud-Festplatte regelmäßig 1:1 auf einen anderen Ordner im Netzwerk. Dahinter verbirgt sich eine Datenfestplatte, die an meinem Hauptrechner hängt.<br>
 sudo rsync -aHAX --info=progress2 /mnt/NEXTCLOUD-FESTPLATTE/ /mnt/NETZWERKORDNER/  <br>
 Die NEXTCLOUD-FESTPLATTE und NETZWERKORDER sind dauerhaft im System eingehängt. <br>
+
+c) Die Datenfestplatte am Hauptrechner wird regelmäßig 1:1 auf eine baugleiche Festplatte mit der gleichen Kapazität gespiegelt.
 
 Das mag aufwändig klingen und natürlich gehört so ein Prozess automatisiert. In meinem Fall gibt es verschiedene Gründe, warum das noch nicht so ist. 
 Kurz gesagt gibt es bei mir kein NAS auf dem zentral die Backups aller Geräte und Daten gesichert werden. Ich führe die Backups für all meine Geräte noch manuell durch und habe hierfür auch verschiedene Festplatten. Es ist ein über die Jahre gewachsenes, chaotisches System, das sich ständig erweitert hat.<br>
@@ -224,7 +227,7 @@ Ein weiteres Argument für die Automatisierung möchte ich der Vollständigkeit 
 
 
 ### Monitoring und Wartung
-- Uptime Kuma:
+Wie bereits kurz beschrieben nutze ich Uptime Kuma für das Monitoring. Der Dienst läuft in einem Container in Docker. Folgende Monitore habe ich mir eingerichtet.
   a) Benachrichtigung über fehlgeschlagene Anmeldeversuche inkl. Standort
   b) Benachrichting falls sicherheitsrelevante Updates für Ubuntu verfügbar sind. 
   c) Benachrichtigung ob Container und Cronjob laufen
