@@ -1,5 +1,8 @@
 # home-server-nextcloud
-Ich baue meinen eigenen Nextcloud-Server um meine Daten zu Hause zu behalten! Das war der Anfang und die Idee des Projekts.
+Ich baue meinen eigenen Nextcloud-Server um meine Daten zu Hause zu behalten! Das war der Anfang und die Idee des Projekts.<br>
+Ich habe beschlossen den Projektverlauf hier nachträglich zu dokumentieren und dabei vorallem auf meine Gedanken und Überlegungen zu den einzelnen Schritten einzugehen.
+Ich werde hier nicht viele kryptische Zeilen aus irgendwelchen NANO-Config-Files einstellen, da ich selbst zu wenig davon verstehe. Vielmehr geht mir darum, meinen
+eigenen Lernprozess zum grundlegenden Verständnis darzustellen.
 
 ## PROJEKTÜBERSICHT
 ### Ziele & Gedanken dazu
@@ -160,8 +163,10 @@ Der Server mit der USB-Festplatte steht im Wohnzimmer und ist kabelgebunden an e
 ### Nextcloud-Funktionen
 Nextcloud bietet verschiedene Funktionen und Dienste. Es gibt einen App-Store, der nützliche Erweiterungen bietet.<br>
 Ich nutze aktuell:<br>
-**- Datei-Synchronisierung:** private Daten aus dem Alltag behalten ich verfügbar auf dem Smartphone, Laptop und meinem Schreibtisch-Rechner. Da ich auf dem Laptop sämtliche Daten in die Cloud synchronisiere, entsteht auf meinem Hauptrechner automatisch eine Sicherung neuer Daten, die auf dem Laptop anfallen. Ein praktischer Nebeneffekt, der natürlich nicht die regelmäßige Datensicherung ersetzt.
+**- Datei-Synchronisierung:** Dateien lassen sich von über eine Weboberfläche oder eine App auf meinem Nextcloud-Benutzer-Konto auf dem Home-Server ablegen. Die Nextcloud-Clients legen auch fest welche Daten Offline verfügbar sind und welche Daten auf dem Server bleiben.Damit behalte ich im Alltag meine Daten verfügbar auf dem Smartphone, Laptop und meinem Schreibtisch-Rechner. Da ich auf dem Laptop sämtliche Daten in die Cloud synchronisiere, entsteht auf meinem Hauptrechner automatisch eine Sicherung neuer Daten, die auf dem Laptop anfallen. Ein praktischer Nebeneffekt, der natürlich nicht die regelmäßige Datensicherung ersetzt. Auf dem Smartphone gehe ich deutlich sparsamer mit Offline-Daten um. Hier ist es praktisch regelmäßig den Cache zu leeren und über die Optionen sehe ich auf einen Blick welche Dateien offline gespeichert sind. Das ist wichtig um die Speicherbelegung des Smartphones im Griff zu behalten.
 <br>
+**- Benutzerverwaltung:** Als Nextcloud-Admin kann ich verschiedene Benutzerkonten mit Benutzerrechten anlegen und vergeben. So hat jeder Benutzer seinen eigenen Bereich für Daten und Dienste. Untereinander sind Datei- und Ordner-Freigaben möglich.
+**- Freigaben:** Datei- und Ordner-Freigaben sind mit unterschiedlichen Rechten zwischen Benutzern möglich, aber auch öffentliche Freigaben sind machbar. Lesen, Erstellen, Ändern, Löschen, Weiterteilen sind die Rechte, die vergeben werden können.
 **- automatischer Photoupload vom Smartphone:** Speicherplatz auf Smartphones ist teuer und begrenzt und bei uns in der Familie belegen Photos immer einen Großteil des Speichers. Ist die Nextcloud-App auf dem Smartphone installiert, bietet die Photos-App ein automatischen Upload der Foto- und Videomediathek an. Das bringt zwei Vorteile. Zum einen sind die Photos direkt als Kopie gesichert und zum anderen kann ich auf dem Smartphone einfach und schnell Photos löschen und Speicher freigeben.
 <br>
 **- Notizen (im Test):** Notizen sind mein Alltagshelfer und ich mache mir ständig Notizen aller Art. Entsprechend ist die Verfügbarkeit sehr wichtig für mich. Mittlerweile habe ich alle meine Notizen nach Nextcloud umgezogen und nutze nur noch diesen Dienst.
@@ -196,8 +201,8 @@ Passwörter: Ich nutze einen Passwort-Manager und lasse mir dort Passwörter gen
 
 ### Backup- und Wiederherstellungskonzept
 Aus zwei einfachen Gründen benötigt es ein Konzept für Backups.<br>
-1) habe ich keine Lust wieder von vorne anzufangen, falls meine System-Platte abraucht. Und...<br>
-2) möchte ich meine Daten nicht verlieren.<br
+1) Ich habe keine Lust wieder von vorne anzufangen, falls meine System-Platte abraucht!<br>
+2) Ich möchte ich meine Daten nicht verlieren!<br
 <br>
 Dieser Punkt ist in meiner Konfiguration noch nicht abgeschlossen und wird zukünftig weiter ausgebaut. Backups erstelle zwar regelmäsig, jedoch bis jetzt manuell. Ich nutze rsync über das Terminal.
 1) Ich erstelle regelmäßig komplette Abbilder der Systemfestplatte auf die eingehängte USB-Festplatte.<br>
@@ -209,6 +214,11 @@ status=progress ->Zeigt den Fortschritt des Kopierprozesses an<br>
 2) Ich kopiere die Nextcloud-Festplatte regelmäßig 1:1 auf einen anderen Ordner im Netzwerk<br>
 sudo rsync -aHAX --info=progress2 /mnt/NEXTCLOUD-FESTPLATTE/ /mnt/NETZWERKORDNER/  <br>
 Die NEXTCLOUD-FESTPLATTE und NETZWERKORDER sind dauerhaft im System eingehängt. <br>
+
+Das mag aufwändig klingen und natürlich gehört so ein Prozess automatisiert. In meinem Fall gibt es verschiedene Gründe, warum das noch nicht so ist. 
+Kurz gesagt gibt es bei mir kein NAS auf dem zentral die Backups aller Geräte und Daten gesichert werden. Ich führe die Backups für all meine Geräte noch manuell durch und habe hierfür auch verschiedene Festplatten.<br>
+Für den Home-Server sind das zwei Befehle die ich in das Terminal copy-paste einfüge. Der Aufwand ist für mich überschaubar, bis ich eine bessere Gesamtlösung für all meine Geräte im Haushalt habe. Das ist ein zukünftiges Projekt.
+Ein weiteres Argument für die Automatisierung möchte ich der Vollständigkeit halber nicht verschweigen. Regelmäßige Backups in kurzen Intervallen minimieren bei einem Schaden den Datenverlust. Ich bewege mich im privaten Rahmen und falls die USB-Festplatte des Server beschädigt wird, verliere ich im Zweifel Daten von einer Woche. In der Regel sind das Photos und die paar Daten, die man in einer Woche produziert. Das Risiko ist mir bewusst und damit wäre ein solcher Verlust kalkuliert und verschmerzbar.
 
 
 ### Monitoring und Wartung
@@ -222,6 +232,11 @@ Die NEXTCLOUD-FESTPLATTE und NETZWERKORDER sind dauerhaft im System eingehängt.
 ### Probleme und Lösungen
 ### Was ich dabei gelernt habe
 ### Mögliche zukünftige Erweiterungen
+### Praktische Erfahrungen.
+- Hardware ist schnell und ausreichend für die kleine Anzahl an Benutzer
+- Synchronisation ist sehr schnell. Geräteübergreifend sind Änderungen fast augenblicklich sichtbar.
+- Nextcloud läuft sehr stabil und zuverlässig. Noch keine Abstürze
+- NOIP. Der Dienst für die kostenlose Nutzung super. Einzig hatte ich mehrmals das Problem, dass mein Server nicht erreichbar war. Meine IP hatte sich geändert und irgendwas bei der Kommunikation zwischen Router und dem Dienst von NOIP lief schief. Schnelle Abhilfe war immer die IP manuell bei NOIP zu ändern. Im privaten Kontext erst Mal kein Problem, wenn man weiß wo das Problem liegt.
 
 
 ## DETAILS
