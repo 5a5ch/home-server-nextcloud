@@ -2,7 +2,7 @@
 Ich baue meinen eigenen Nextcloud-Server um meine Daten zu Hause zu behalten! Das war der Anfang und die Idee des Projekts.<br>
 Ich habe beschlossen den Projektverlauf hier nachträglich zu dokumentieren und dabei vorallem auf meine Gedanken und Überlegungen zu den einzelnen Schritten einzugehen.
 Ich werde hier nicht viele kryptische Zeilen aus irgendwelchen NANO-Config-Files einstellen, da ich selbst zu wenig davon verstehe. 
-Es handelt sich also nicht um eine Anleitung, davon gibt es genug da draußen im Netz, vielmehr geht mir darum, meinen
+Es handelt sich also nicht um eine Anleitung, davon gibt es genug da draußen im Netz. Vielmehr geht mir darum, meinen
 eigenen Lernprozess zum grundlegenden Verständnis darzustellen.
 
 ## PROJEKTÜBERSICHT
@@ -217,9 +217,10 @@ sudo rsync -aHAX --info=progress2 /mnt/NEXTCLOUD-FESTPLATTE/ /mnt/NETZWERKORDNER
 Die NEXTCLOUD-FESTPLATTE und NETZWERKORDER sind dauerhaft im System eingehängt. <br>
 
 Das mag aufwändig klingen und natürlich gehört so ein Prozess automatisiert. In meinem Fall gibt es verschiedene Gründe, warum das noch nicht so ist. 
-Kurz gesagt gibt es bei mir kein NAS auf dem zentral die Backups aller Geräte und Daten gesichert werden. Ich führe die Backups für all meine Geräte noch manuell durch und habe hierfür auch verschiedene Festplatten.<br>
+Kurz gesagt gibt es bei mir kein NAS auf dem zentral die Backups aller Geräte und Daten gesichert werden. Ich führe die Backups für all meine Geräte noch manuell durch und habe hierfür auch verschiedene Festplatten. Es ist ein über die Jahre gewachsenes, chaotisches System, das sich ständig erweitert hat.<br>
 Für den Home-Server sind das zwei Befehle die ich in das Terminal copy-paste einfüge. Der Aufwand ist für mich überschaubar, bis ich eine bessere Gesamtlösung für all meine Geräte im Haushalt habe. Das ist ein zukünftiges Projekt.
-Ein weiteres Argument für die Automatisierung möchte ich der Vollständigkeit halber nicht verschweigen. Regelmäßige Backups in kurzen Intervallen minimieren bei einem Schaden den Datenverlust. Ich bewege mich im privaten Rahmen und falls die USB-Festplatte des Server beschädigt wird, verliere ich im Zweifel Daten von einer Woche. In der Regel sind das Photos und die paar Daten, die man in einer Woche produziert. Das Risiko ist mir bewusst und damit wäre ein solcher Verlust kalkuliert und verschmerzbar.
+Ein weiteres Argument für die Automatisierung möchte ich der Vollständigkeit halber nicht verschweigen. Regelmäßige Backups in kurzen Intervallen minimieren bei einem Schaden den Datenverlust. Ich bewege mich im privaten Rahmen und falls die USB-Festplatte des Server beschädigt wird, verliere ich im Zweifel Daten von einer Woche. In der Regel sind das Photos und die paar Daten, die man in einer Woche produziert. Das Risiko ist mir bewusst und damit wäre ein solcher Verlust kalkuliert und verschmerzbar.<br>
+1-2-3 Regel: Nach dieser Regel sollte ich noch ein Backup außer Haus haben. Das gibt es zur Zeit noch nicht. Ich habe Ideen dazu, wie sich das günstig und unkompliziert realiseren ließe und kann vielleicht in Zukunft darüber berichten.
 
 
 ### Monitoring und Wartung
@@ -234,7 +235,8 @@ Ein weiteres Argument für die Automatisierung möchte ich der Vollständigkeit 
 ### Was ich dabei gelernt habe
 ### Mögliche zukünftige Erweiterungen
 ### Praktische Erfahrungen.
-- Hardware ist schnell und ausreichend für die kleine Anzahl an Benutzer
+- Hardware ist schnell und ausreichend für die kleine Anzahl an Benutzer in der jetzigen Konfiguration
+- Lokale KI-Nutzung nicht möglich! Hierfür braucht es zwingend moderne Hardware. 
 - Synchronisation ist sehr schnell. Geräteübergreifend sind Änderungen fast augenblicklich sichtbar.
 - Nextcloud läuft sehr stabil und zuverlässig. Noch keine Abstürze
 - NOIP. Der Dienst für die kostenlose Nutzung super. Einzig hatte ich mehrmals das Problem, dass mein Server nicht erreichbar war. Meine IP hatte sich geändert und irgendwas bei der Kommunikation zwischen Router und dem Dienst von NOIP lief schief. Schnelle Abhilfe war immer die IP manuell bei NOIP zu ändern. Im privaten Kontext erst Mal kein Problem, wenn man weiß wo das Problem liegt.
