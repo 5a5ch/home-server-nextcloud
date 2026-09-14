@@ -38,33 +38,13 @@ Ja, und welche Anforderungen hat so ein System überhaupt? Ich definiere also An
 - Erweiterbarkeit
 
 ### Recherche und erste Schritte
-Ich begann also mit ersten Recherchen zu den verschiedenen Themen und laß mich durch Artikel und Forenbeiträge. Ich nahm
-Suchbegriffe, tippte sie in die Suchmaschine und ließ von dort an treiben. Ich laß über Nutzererfahrungen, Hardware-Empfehlungen
-und hoffte auch Komplett-Anleitungen, die mich später durch die Einrichtung führen sollten. Und wie das zu Beginn eines Projektes,
-von dem ich kaum Ahnung hatte, oft so ist, bekam ich nicht mehr Klarheit, sondern es taten sich immer neue Fragen auf und
-die Sache wurde erst ein Mal unübersichtlicher.
-Also beschloss ich einfach mal loszulegen. Ich hatte noch einen alten Raspberry Pi 3b und Festplatten lagerten auch genug in
-meinen Schubladen. Dass die Hardware des Raspi für Nextcloud zu langsam ist, ist mir bekannt, aber das stört mich erst Mal nicht.
-Ich wollte erst Mal Erfahrung sammeln und mich so der Sache annähern.
-An dieser Stelle kürze ich etwas ab, da ich die Einleitung nicht unnötig verlängern möchte und nur das Nötigste erwähnen möchte.
-Mit dem Raspi habe ich grundlegend die Installation von Nextcloud zum laufen bekommen und den Zugriff über das lokale Netzwerk. 
-Es stellte sich allerdings sehr schnell raus, dass die Hardware komplett überfordert ist und das System extrem langsam läuft. 
-Für einige Test und zum Ausprobieren war das akzeptabel, aber für den späteren Betrieb weder brauchbar noch praktikabel.
+Ich begann also mit ersten Recherchen zu den verschiedenen Themen und laß mich durch Artikel und Forenbeiträge. Ich nahm Suchbegriffe, tippte sie in die Suchmaschine und ließ von dort an treiben. Ich laß über Nutzererfahrungen, Hardware-Empfehlungen und hoffte auch Komplett-Anleitungen, die mich später durch die Einrichtung führen sollten. Und wie das zu Beginn eines Projektes, von dem ich kaum Ahnung hatte, oft so ist, bekam ich nicht mehr Klarheit, sondern es taten sich immer neue Fragen auf und die Sache wurde erst ein Mal unübersichtlicher. Also beschloss ich einfach mal loszulegen. Ich hatte noch einen alten Raspberry Pi 3b und Festplatten lagerten auch genug in meinen Schubladen. Dass die Hardware des Raspi für Nextcloud zu langsam ist, ist mir bekannt, aber das stört mich erst Mal nicht. Ich wollte erst Mal Erfahrung sammeln und mich so der Sache annähern. An dieser Stelle kürze ich etwas ab, da ich die Einleitung nicht unnötig verlängern möchte und nur das Nötigste erwähnen möchte. Mit dem Raspi habe ich grundlegend die Installation von Nextcloud zum laufen bekommen und den Zugriff über das lokale Netzwerk. Es stellte sich allerdings sehr schnell raus, dass die Hardware komplett überfordert ist und das System extrem langsam läuft. Für einige Test und zum Ausprobieren war das akzeptabel, aber für den späteren Betrieb weder brauchbar noch praktikabel.
 
-### Hardware
-Grundlegenden Fragen waren: 
-- "welche Hardware benötige ich?"<br>
-  -> Es ist nicht die neuste Hardware nötig. Aus Tutorials, Forenbeiträgen und Artikeln geht klar hervor, dass ältere Hardware sich heute
-  immer noch gut für ein Home-Server-Projekt eignet. Ich entschloss mich zuerst für einen gebrauchten MacMini. Für 50 € fand ich bei Kleinanzeigen
-  ein Modell aus 2013 mit ein i7-Quad-Core-Prozessor, 8 GB RAM und einer SSD. Leider stellte sich nach dem Kauf heraus, dass eine Neuinstallation von 
-  Ubuntu oder macOS nicht möglich ist, da das Gerät mit einem UEFI-Passwort versehen war. Ich kontaktierte den Verkäufer, der mir aber glaubhaft versicherte
-  das er davon nichts und wusste und das Gerät selbst vor Jahren gebraucht gekauft hatte. Im normalen Betrieb wird dieses Passwort nicht abgefragt - deshalb
-  wusste er nicht davon. Ich recherchierte also wie ich diesen Passwort-Schutz umgehen könne bzw. ob ein komplettes Werksreset möglich ist. In meinem Fall
-  war das "leider" nicht möglich. Apple hat hier gut gearbeitet und so soll es auch sein! Ich stieß bei meiner Recherche auf einige "Kaufmöglichkeiten", die
-  versprachen den Schutz auszuhebeln. Allerdings für einen Preis jenseits von 100 €. Das war das Gerät nicht wert und mir erschienen die Angebote auch etwas
-  dubios. Nachdem ich hier in eine Sackgasse kam, entschloss ich mich die Einzelteile auszubauen und zu verkaufen, was mir auch gelang. RAM, SSD und Logigboard
-  einzeln verkauft, brachten mir ca. 45 €. Mein Verlust hielt sich in Grenzen.<br>
-  <br>
+### Hardware & Software
+**Grundlegenden Fragen:<br>**
+**- "welche Hardware benötige ich?"<br>**
+  -> Es ist nicht die neuste Hardware nötig. Aus Tutorials, Forenbeiträgen und Artikeln geht klar hervor, dass ältere Hardware sich heute immer noch gut für ein Home-Server-Projekt eignet. Ich entschloss mich zuerst für einen gebrauchten MacMini. Für 50 € fand ich bei Kleinanzeigen ein Modell aus 2013 mit ein i7-Quad-Core-Prozessor, 8 GB RAM und einer SSD. Leider stellte sich nach dem Kauf heraus, dass eine Neuinstallation von Ubuntu oder macOS nicht möglich ist, da das Gerät mit einem UEFI-Passwort versehen war welches ich nicht kannte und was ein Neuaufsetzen des OS verhinderte. Ich kontaktierte den Verkäufer, der mir aber glaubhaft versichert, dass er davon nichts und wusste und das Gerät selbst vor Jahren gebraucht gekauft hatte. Im normalen Betrieb wird dieses Passwort nicht abgefragt - deshalb wusste er nicht davon. Ich recherchierte also wie ich diesen Passwort-Schutz umgehen könne bzw. ob ein komplettes Werksreset möglich ist. In meinem Fall war das "leider" nicht möglich. Apple hat hier gut gearbeitet und   so soll es auch sein! Ich stieß bei meiner Recherche auf einige "Kaufmöglichkeiten", die versprachen den Schutz auszuhebeln. Allerdings für einen      Preis jenseits von 100 €. Das war das Gerät nicht wert und mir erschienen die Angebote auch etwas dubios. Nachdem ich hier in eine Sackgasse kam, entschloss ich mich die Einzelteile auszubauen und zu verkaufen, was mir auch gelang. RAM, SSD und Logigboard einzeln verkauft, brachten mir ca. 45 €. Mein Verlust hielt sich in Grenzen.<br>
+<br>
   Beim nächsten Anlauf suchte ich gezielt nach ThinClients. Ich stieß auf ein Lenovo ThinkCentre für 35 € und handelte den Versand inklusive aus.<br>
   Spezifikationen:<br>
   Intel(R) Core(TM) i5-3470T CPU @ 2.90GHz<br>
@@ -72,19 +52,17 @@ Grundlegenden Fragen waren:
   integrierte Grafik-Einheit<br>
   ohne SSD/HDD<br>
   Ich setzte eine alte 120 GB OCZ Vertex ein und schon war die Hardware für das System bereit.<br>
-  Speicher: Ich habe eine Schublade voll mit Festplatten in verschiedenen Größen und entschied mich mit einer alten 1TB Platte in einem externen Gehäuse und
-  über USB angeschlossen zu beginnen.<br>
+  Speicher: Ich habe eine Schublade voll mit Festplatten in verschiedenen Größen und entschied mich mit einer alten 1TB Platte in einem externen Gehäuse und über USB angeschlossen zu beginnen.<br>
   <br>
-- "Welche Anforderungen stellt die Software?"<br>
-  Ich laß überall, dass Linux generell ein wenig leistunghungriges System ist. Es wird stetig gewartet und bekommt Updateas. Es ist frei. Also wählte ich
-  Ubuntu ohne graphische Oberfläche. Docker und Nextcloud sollten der Hardware keine Probleme bereiten. Das hatte ich mehrmals im Netz abgefragt.<br>
+**- "Welche Anforderungen stellt die Software?"<br>**
+  Ich laß überall, dass Linux generell ein wenig leistunghungriges System ist. Es wird stetig gewartet und bekommt Updates. Es ist frei. Also wählte ich Ubuntu ohne graphische Oberfläche. Docker und Nextcloud sollten der Hardware keine Probleme bereiten. Das hatte ich mehrmals im Netz abgefragt.    <br>
   <br>
-- "Wie zukunftsfähig/erweiterungsfähig soll mein System sein?"<br>
+**- "Wie zukunftsfähig/erweiterungsfähig soll mein System sein?"<br>**
   Zu dem Zeitpunkt hatte ich noch keine Zukunftsfolgepläne. Aber ich ging davon aus, dass sich neben Nextcloud sicher noch der ein oder andere Dienst
   installieren ließe. Erst mit den späteren Recherchen stieße auf weitere Inspirationen wie Smart-Home, Pihole, Email-Server. Für ein KI-Projekt, was
   ich in Zukunft irgendwann noch starten werde, ist die Hardware nicht brauchbar.<br>
   <br>
-- "Welche laufenden Kosten entstehen durch den Stromverbrauch?"<br>
+**- "Welche laufenden Kosten entstehen durch den Stromverbrauch?"<br>**
   Zunächst einmal stellte sich die Frage wie man das überhaupt berechnet? Rechnet man mit annähernd Leerlauf-Verbrauch? Unter Volllast wird das System eher
   nicht laufen. Finde ich überhaupt Werte für die CPU?<br>
   Der Prozesser wird mit 35-W-TDP angegeben. Das ist natürlich erst Mal ein Wert, der sich schwer in Relation setzen lässt. Also befragte ich KI und ließ mir
@@ -108,7 +86,7 @@ Grundlegenden Fragen waren:
   An der Stelle lohnt es sich zu rechnen. Denn moderne Hardware, also moderne CPU, gerade Mobilprozessoren, sind für so ein Projekt ideal. Und damit komme ich
   zur nächsten Frage.<br>
   <br>
-- "Welches Budget steht mir zu Verfügung?"<br>
+**- "Welches Budget steht mir zu Verfügung?"<br>**
   Ehrlich gesagt wollte ich nicht viel Geld ausgeben. Es ist in erster Linie ein Versuch von dem ich nicht weiß wie gut und zuverlässig alles laufen wird. Ich
   konnte zu Beginn nicht abschätzen, welche Hürden und Stolpersteine mich noch erwarten und ob das Ganze wirklich nachhaltig funktionieren wird.
   Die Kosten der Hardware habe ich ja oben schon erwähnt und dabei wollte ich es vorerst auch belassen.
@@ -116,9 +94,34 @@ Grundlegenden Fragen waren:
   Sehe ich später, dass alles gut läuft, kann ich die Rechnung nochmal überdenken. Ein sparsames Gerät das unter 5 Watt verbraucht und dazu eine SSD für Daten,
   die über USB mit Strom versorgt wird, würde die laufenden Stromkosten nochmal deutlich reduzieren, was sich über die Zeit aufrechnen kann.<br>
   <br>
-- "Welche Software/OS nutze ich überhaupt?"
+**- "Welches OS nutze ich überhaupt?"<br>**
+  Vorweg:<br>
+  Ich habe mich für Ubuntu entschieden.<br>
+  Ubuntu ist frei. Es gibt regelmäßig Updates. Es braucht wenig Ressourcen und kann ohne GUI installiert werden. Es gibt bereits viele beispielhafte Projekte, die 
+  gut dokumentiert sind. Und es reizt mich Erfahrung mit Linux zu sammeln.<br>
+  Ich habe mir aber vorher angeschaut welche Möglichkeiten es gibt und für mich bewertet:<br>
+  - macOS: ein alter MacMini wäre preisgünstig gewesen, es hätte aber Probleme mit einem aktuellen macOS früher oder später gegeben. Über OpenCorePatcher
+    lässt sich bis Sequoia patchen. Dann ist aber Schluss, Tahoe läuft noch nicht. Außerdem fällt die USB-A-Anschluss Unterstützung irgendwann weg. Ich 
+    hatte etwa vor einem Jahr einen iMac Late 2013 (i5 Quad-Core, 16 GB RAM, 1 GB GPU) auf Sequoia geupdatet und leider festgestellt, dass das System
+    wirklich schwerfällig läuft. Zwei Gründe, die dagegen sprechen. Ein neueres Modell mit M-Prozessor wäre sicher ideal für das OS, aber nicht im Budget.<br>
+  - Windows 11: Mein erstes Bedenken: Windows ist von Haus aus sehr ressourcenhungrig und meine Hardware ist schon etwas älter. Vermutlich muss man lange 
+    und tief in das System eingreifen um unnötige Dienste dauerhaft abzuschalten um das System performanter und ressourcenschonender zu machen. Zweites
+    Fragezeichen: Kompatibilität-Abfrage von Windows an die Hardware: Von Haus aus, ist so ein alter PC nicht mit den Anforderungen kompatibel. Mit dem Rufus Tool
+    zur Erstellung eines Installations-Medium hätte ich das Problem vermutlich umgehen können. Kommen wir zu den Updates. Leider habe ich schon oft gehört
+    dass Updates gerne mal vom User gemachte Einstellungen und Anpassungen überschreiben und den von Microsoft gewünschten Zustand wiederherstellen. Das fände ich
+    ehrlich gesagt sehr unschön und so sehr ich mich auf das Projekt freue, möchte ich zukünftig aber nicht ständig fürchten Einstellungen erneut und erneut
+    machen zu müssen. Und zu guter Letzt bin ich überhaupt kein Freund von Microsofts Einstellung zum Umgang mit sogenannten Diagnose- und Nutzungsdaten. Schon
+    allein die Tatsache Windows nicht ohne Microsoft-Konto nutzen zu können widerstrebt mir. Windows schied also aus.<br>
+  - Raspberry OS: Das OS ist eine Linux-Distribution, die speziell für den Raspberry gemacht ist. Es gibt sie mit und ohne GUI. Prinzipiell wäre das ein gute Wahl
+    insbesondere in Kombination mit einem Modell 4 oder 5 des Raspi.
+  <br>
 
-- "Gibt es Empfehlungen aus Foren oder Artikeln?"
+**- "Gibt es Empfehlungen aus Foren oder Artikeln?"<br>**
+Ja, die gibt es massenhaft. Man kann lesen, lesen, lesen und ebensoviele Tutorials schauen. Das ist gut. Es zeigt wie beliebt und aktuell das Thema ist. Nextcloud
+ist hier nicht die einzige Lösung. Bei meiner Recherche habe ich auch kurze Blicke auf andere Optionen geworfen. Ehrlich gesagt, habe ich mich aber nicht tiefer-
+gehend mit anderen Lösungen beschäftigt. Mein Fokus lag von Anfang an auf Nextcloud. Ich bin ein Anfänger und jeder Schritt des Projekts ist für mich mehr oder
+weniger Neuland und erfordert einiges Anlesen an Wissen. Gerade am Anfang hatte ich viele Fragezeichen zu klären und oftmals hatte ich nach dem Recherchieren 
+mehr Fragen als Antworten auf meinem Zettel. So beschloss ich mich zu diesem Zeitpunkt nicht mit Alternativen auseinanderzusetzen.
 
 ### Software und Versionen
 Ziel ist es Nextcloud zum laufen zu bringen. Das ist auf vielen Wegen möglich. Ich entschied mich nach einiger Recherche für folgenden Unterbau:
@@ -130,8 +133,28 @@ Ziel ist es Nextcloud zum laufen zu bringen. Das ist auf vielen Wegen möglich. 
 
 Alle Applikationen in der zur Zeit der Installation aktuellsten Version.
 
+
+### Vorgehensweise bei Installation und Einrichtung
+Ich komme nun zu einem grundlegenden Gedanken, der mich schon während all den Überlegungen begleitet hat. Wie gehe ich die Sache an? Aus früheren Projekten weiß ich, dass auf mich eine Menge Recherche zukommt und dass mich viele der Themen beim Ausprobieren an den Rand der Verwzweiflung bringen werden. Warum weiß ich das? Ich kenne mich schlicht nicht aus. Jeden Terminal-Befehl, jede Zeile in einer Config-Datei, werde ich irgendwoher aus dem Netz kopieren, vielleicht leicht modifizieren und hoffen sie in meinem Fall das Richtige macht. Die Schwierigkeit ist hier, dass vermutlich keines der Programme oder der Dienste, die es zwingend zu installieren und zu konfigurieren gilt, mit einer GUI arbeitet auf der man alle Einstellungsmöglichkeiten an- und abhaken kann, wo noch ein schöner Hilfetext erscheint, wenn man mit der Maus darüber hovert. Alles passiert in der Kommandozeile oder in irgendeinem Texteditor und alles sieht wahnsinnig kryptisch aus.<br>
+Bereits in der Vergangenheit habe ich Homepages in HMTL "geschrieben" oder mir ein NAS auf dem Raspi eingerichtet. Bei einer Homepage ist es ein großes Puzzle. Ich suche mich passende Code-Schnipsel, versuche zu verstehen was dort steht und kopiere sie mit leichen Anpassungen. Dann wundere ich mich warum sie nicht funktionieren und probiere so lange herum bis es klappt. Ziemlich müßig und ehrlich gesagt nicht so effektiv. Ich habe natürlich grundlegend immer etwas dabei gelernt, gerade was die Funktionsweisen einer Sache, eines Codeschnipsel, eines Diensts angeht, die detaillierte Vorgehensweise ist dabei aber nicht hängengeblieben.<br>
+Meine Berührungspunkte mit KI waren bis dahin minimal. Im Alltag nutzte ich bis dahin keine KI. Mein Alltagsbegleiter war Google. Und ehrlich gesagt, hatte ich keine Fragen an die KI. Mir fehlte bis dahin das Vorstellungsvermögen, wie ich KI sinnvoll für mich einsetzen konnte. Für die Wetterabfrage braucht es keine KI und die Öffnungszeiten vom nächsten Supermarkt zeigt die Karten-App an. Neue Rezepte finde ich bei Chefkoch und bei Thomann kaufe ich Saiten für meine Gitarre.<br>
+Aber mit diesem Projekt bot sich mir eine erste und gute Gelegenheit mich mit KI vertraut zu machen und zu lernen wie mir die KI hilfreich sein konnte bei meinem Vorhaben. Ich würde sehen welche Vor- und Nachteile mir das bringt. Ich würde sehen wie man mit KI arbeitet und ich würde mir auch endlich selbst einen Eindruck verschaffen. Ich erwähne das, weil die KI mir entscheidend geholfen hat mein Projekt bis zum aktuellen Stand umzusetzen. Ich kann vorweg nehmen, dass ich ziemlich begeistert bin. Ich habe schnell gelernt, dass meine Prompts entscheidend für eine gute Antwort sind. Ich habe mir alles ausführlich erklären lassen und bin über die Antworten zu vielen neuen Themen gekommen. Manchmal habe ich lange Diskussionen geführt um dann festzustellen, es ist besser etwas nicht zu machen. Ich habe auch festgestellt, dass KI sich gerne mal täuscht, im ersten Moment aber immer sehr überzeugt von Ihrem Vorschlag ist. Ich habe das berühmte Halluzinieren nachvollziehen können und gerlernt je mehr Infomation man zu Verfügung stellt, desto wahrscheinlicher wird eine gute Antwort. Definitiv ist es wichtig, jede Antwort kritisch zu hinterfragen, Belege einzufordern und zu prüfen. Mit Hilfe der KI näherte ich mich den Themen und erwarb ein Grundverständis. Mit der KI lernte ich NICHT tiefere Kenntnisse der Konfiguration verschiedener Dienste unter Linux. Die KI spuckt einen Terminal-Befehl aus, drei Zeilen lang und mit vielen Variablen, Optionen versehen ist und ich kopierte diese Befehle. Aber ich ließ mir immer ausführlich erklären warum und wofür eine Konfiguration oder ein Dienst nötig ist.<br>
+KI ist ein mächtiges Assistenz-System, mit dem man viel Lernen kann. Man kann aber auch einfach schnell sein und nicht hinterfragen, es wird schon irgendwie laufen. Das mag ich persönlich nicht. Ich fühle mich nicht wohl, wenn ich nicht grundlegend verstehe, was ich mache und mich nicht bewusst entscheide. Ich habe schnell festgestellt, dass es sich lohnt lange und ausführlich zu fragen. Die KI kennt keine Ungeduld und keine dummen Fragen!!! Anderherum war ich noch nie um dumme Fragen verlegen ;-)
+
 ### Netzwerkarchitektur
-### Installation und Einrichtung
+Der Server mit der USB-Festplatte steht im Wohnzimmer und ist kabelgebunden an einen Mesh-Repeater, der wiederum das WLAN-Signal vom Router aus dem Stockwerk darunter verstärkt,  angeschlossen. Ins Internet geht es über den Router. Die IP-Adresse wird vom Router über DCHP vergeben. Der Router ist so eingestellt, dass er diese Adresse dauerhaft an den Server vergibt. Zugriff auf den Server sollen später ein Laptop, ein stationärer Rechner und vier Smartphones haben. Insgesamt vier Benutzer. Zugriff soll über außen erfolgen. Darauf gehe ich im Detail später ein. Auf dem Server wird ein Reverse Proxy laufen, der die Anfragen von außen an die entsprechenden Dienste auf dem Server weiterleiten wird. Auf dem Router wird eine Portweiterleitung eingerichtet, die auf den Server zeigt. 
+
+*welche Geräte beteiligt sind*
+*wie der Server mit dem Netzwerk verbunden ist*
+*welche Geräte auf Nextcloud zugreifen*
+*ob der Zugriff nur im Heimnetz oder auch von außen möglich ist*
+*welche Rolle der Router spielt*
+*ob du VPN, Portfreigabe oder einen Reverse Proxy verwendest*
+*welche Dienste auf dem Server laufen*
+*welche Zugriffe erlaubt oder verhindert werden*
+
+
+
 ### Nextcloud-Funktionen
 ### Sicherheitsmaßnahmen
 ### Backup- und Wiederherstellungskonzept
