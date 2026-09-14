@@ -164,12 +164,13 @@ Ich nutze aktuell
 **- automatischer Photoupload vom Smartphone:** Speicherplatz auf Smartphones ist teuer und begrenzt und bei uns in der Familie belegen Photos immer einen Großteil des Speichers. Ist die Nextcloud-App auf dem Smartphone installiert, bietet die Photos-App ein automatischen Upload der Foto- und Videomediathek an. Das bringt zwei Vorteile. Zum einen sind die Photos direkt als Kopie gesichert und zum anderen kann ich auf dem Smartphone einfach und schnell Photos löschen und Speicher freigeben.
 **- Notizen (im Test):** Notizen sind mein Alltagshelfer und ich mache mir ständig Notizen aller Art. Entsprechend ist die Verfügbarkeit sehr wichtig für mich. Mittlerweile habe ich alle meine Notizen nach Nextcloud umgezogen und nutze nur noch diesen Dienst.
 **- Passwort-Verwaltung (im Test):** Ich nutze generell einen Passwort-Manager. Ohne diesen näher zu benennen, muss ich kaum betonen, dass die Sicherheit und die Funktion sehr, sehr wichtig sind. Bevor ich hier einen kompletten Umzug mache, werde ich den von Nextcloud angebotenen Dienst näher beleuchten und ausführlich testen. Das habe ich bis jetzt nicht getan. Prinzipiell ist die App am Handy installiert und über die Webobefläche ist der Passwort-Manager am PC zugänglich.
-**- Kontakte (im Test):** 
-- integriertes Open-Office
+**- Kontakte (im Test):** von einem Umzug meiner Kontakte zu Nextcloud verspreche ich mir eine betriebssystemübergreifende Nutzung. Der Praxistest steht hier noch aus.
+**- integriertes Office:** mit Collabora bietet Nextcloud eine Office-Lösung, die auf dem Server als Anwendung läuft. Pluspunkt ist natürlich das es damit möglich ist eine Vielzahl an Dokumenten von unterwegs zu lesen und zu bearbeiten. Am Smartphone versuche das ehrlicherweise zu vermeiden. Ob die Office-Anwendungen mit MS Office oder dem Apple-Office mithalten können, welche Hürden die Kompatibilität mit sich bringt, kann ich bis jetzt nicht wirklich gut beurteilen. Für die einfachen Dinge funktioniert es gut.
 
 Zukünftig ist für mich interessant
 - KI-Erweiterung/Integration
 - eMail-Server
+
 ### Sicherheitsmaßnahmen
 ### Backup- und Wiederherstellungskonzept
 ### Monitoring und Wartung
