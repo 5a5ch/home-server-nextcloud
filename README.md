@@ -172,14 +172,21 @@ Zukünftig ist für mich interessant
 - eMail-Server
 
 ### Sicherheitsmaßnahmen
-Ja, das Thema Sicherheit ist vielleicht das Wichtigste. Während Dienste mal nicht funktionieren dürfen oder irgendwelche nervigen Sync-Probleme mit ständigen Time-Out-Meldungen nerven können, sollte sicherheitstechnisch nichts schief gehen, da ja es um meine persönlichen Daten geht. Das Thema KI und Sicherheit sollte man auch mit Vorsicht genießen. Nicht jede Empfehlung und Anleitung, welche die KI vorschlägt ist automatisch sicher! Ein Thema welches in Bezug auf Vibe-Coding für Anfänger, also das klassische Beispiel des jungen Unternehmers, der mit Vibe-Coding seine Internetpräsenz aufbaut und später stellt sich heraus, dass die Kundendatenbank offen im Netz lag. DSGVO-Horror-Szenario.<br>
+Ja, das Thema Sicherheit ist vielleicht das Wichtigste. Während Dienste mal nicht funktionieren dürfen oder irgendwelche nervigen Sync-Probleme mit ständigen Time-Out-Meldungen nerven können, sollte sicherheitstechnisch nichts schief gehen, da ja es um meine persönlichen Daten geht. Das Thema KI und Sicherheit sollte man auch mit Vorsicht genießen. Nicht jede Empfehlung und Anleitung, welche die KI vorschlägt ist automatisch sicher! Ein Thema welches in Bezug auf Vibe-Coding für Anfänger, also das klassische Beispiel des jungen Unternehmers, der mit Vibe-Coding seine Internetpräsenz aufbaut und später stellt sich heraus, dass die Kundendatenbank offen im Netz lag. DSGVO-Horror-Szenario. An anderen Stellen lese ich, ein offener Port am Router wie es für meinen Home-Server nötig ist, ist generell ein Einfallstor und dort draussen scannen Bots ständig und suchen solche Tore. <br>
 Nextcloud selbst bringt ein paar Werkzeuge  mit.<br>
 - Zwei-Faktor-Authentifizierung 2FA
 - Log-Files
 <br>
 Mit Uptime-Kuma habe ich ein Tool entdeckt, dass es ermöglicht Regeln und Abfragen zu erstellen und diese zu überwachen.<br>
-Soll lassen sich Zugriffe und Anmeldeversuche überwachen.
+Soll lassen sich Zugriffe und Anmeldeversuche überwachen.<br>
+Sicherheitsrelevante System-Updates müssen regelmäßig geprüft und ei gespielt werden. Auch dabei hilft Kuma. <br>
+Passwörter: Ich nutze einen Passwort-Generator. Passw0rt123 kommt nicht in Frage ;-)<br>
+
 ### Backup- und Wiederherstellungskonzept
+Es braucht definitiv ein solches Konzept.<br>
+1) habe ich keine Lust wieder von vorne anzufangen, falls meine System-Platte abraucht. Und...<br>
+2) möchte ich meine Daten nicht verlieren.<br
+
 ### Monitoring und Wartung
 ### Probleme und Lösungen
 ### Was ich dabei gelernt habe
