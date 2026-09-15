@@ -188,9 +188,19 @@ Zukünftig ist für mich interessant
 ### Sicherheitsmaßnahmen
 Ja, das Thema Sicherheit ist das Wichtigste. Während Dienste mal nicht funktionieren dürfen oder irgendwelche nervigen Sync-Probleme mit ständigen Time-Out-Meldungen nerven können, sollte sicherheitstechnisch nichts schief gehen, da ja es um meine persönlichen Daten geht. Das Thema KI und Sicherheit sollte man auch mit Vorsicht genießen. Nicht jede Empfehlung und Anleitung, welche die KI vorschlägt ist automatisch sicher! Ein Thema welches in Bezug auf Vibe-Coding für Anfänger, also das klassische Beispiel des jungen Unternehmers, der mit Vibe-Coding seine Internetpräsenz aufbaut und später stellt sich heraus, dass die Kundendatenbank offen im Netz lag. DSGVO-Horror-Szenario. An anderen Stellen lese ich, ein offener Port am Router wie es für meinen Home-Server nötig ist, ist generell ein Einfallstor und dort draussen scannen Bots ständig und suchen solche Tore. <br>
 <br>
-Nextcloud selbst bringt ein paar Werkzeuge  mit.<br>
-- Zwei-Faktor-Authentifizierung 2FA
-- Log-Files
+Nextcloud Sicherheitsmaßnahmen<br>
+- Zwei-Faktor-Authentifizierung [noch nicht eingerichtet]
+- Admin-Konto: nur ich bin Admin und kann Einstellungen vornehmen und Berechtigungen vergeben.
+- Anmeldung: nach fünf fehlgeschlagenen Anmeldeversuchen wird die IP-Adresse für 24 Stunden gesperrt. Ich erhalte eine automatische Benachrichtigung über jeden fehlgeschlagenen Anmeldeversuch. Ein Skript ermittelt den Standort der IP-Adresse. Technisch sieht das so aus:<br>
+fehlgeschlagene Logins werden in nextcloud.log gespeichert.<br>
+fail2ban-jail wertet die Einträge aus.<br>
+ein Cronjob läuft alle 10 Minuten:<br>
+Abfrage nach aktiven Sperren<br>
+Zähler wird mit vorigem Durchlauf verglichen<br>
+Nextcloud-Log wird ausgelesen<br>
+IP fehlgeschlagener Logins wird ermittelt<br>
+Geolokalisierung wird online abgefragt<br>
+Status und Meldung an KUMA<br>
 <br>
 - Zertifikate
 - Port 443, HTTPS
