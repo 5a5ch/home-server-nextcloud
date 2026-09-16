@@ -141,7 +141,7 @@ Alle Applikationen in der zur Zeit der Installation aktuellsten Version.
 ### Vorgehensweise bei Installation und Einrichtung
 Ich komme nun zu einem grundlegenden Gedanken, der mich schon während all den Überlegungen begleitet hat. Wie gehe ich die Sache an? Aus früheren Projekten weiß ich, dass auf mich eine Menge Recherche zukommt und dass mich viele der Themen beim Ausprobieren an den Rand der Verwzweiflung bringen werden. Warum weiß ich das? Ich kenne mich schlicht nicht aus. Jeden Terminal-Befehl, jede Zeile in einer Config-Datei, werde ich irgendwoher aus dem Netz kopieren, vielleicht leicht modifizieren und hoffen sie in meinem Fall das Richtige macht. Die Schwierigkeit ist hier, dass vermutlich keines der Programme oder der Dienste, die es zwingend zu installieren und zu konfigurieren gilt, mit einer GUI arbeitet auf der man alle Einstellungsmöglichkeiten an- und abhaken kann, wo noch ein schöner Hilfetext erscheint, wenn man mit der Maus darüber hovert. Alles passiert in der Kommandozeile oder in irgendeinem Texteditor und alles sieht wahnsinnig kryptisch aus.<br>
 Bereits in der Vergangenheit habe ich Homepages in HMTL "geschrieben" oder mir ein NAS auf dem Raspi eingerichtet. Bei einer Homepage ist es ein großes Puzzle. Ich suche mich passende Code-Schnipsel, versuche zu verstehen was dort steht und kopiere sie mit leichen Anpassungen. Dann wundere ich mich warum sie nicht funktionieren und probiere so lange herum bis es klappt. Ziemlich müßig und ehrlich gesagt nicht so effektiv. Ich habe natürlich grundlegend immer etwas dabei gelernt, gerade was die Funktionsweisen einer Sache, eines Codeschnipsel, eines Diensts angeht, die detaillierte Vorgehensweise ist dabei aber nicht hängengeblieben.<br>
-Meine Berührungspunkte mit KI waren bis dahin minimal. Im Alltag nutzte ich bis dahin keine KI. Mein Alltagsbegleiter war Google. Und ehrlich gesagt, hatte ich keine Fragen an die KI. Mir fehlte bis dahin das Vorstellungsvermögen, wie ich KI sinnvoll für mich einsetzen konnte. Für die Wetterabfrage braucht es keine KI und die Öffnungszeiten vom nächsten Supermarkt zeigt die Karten-App an. Neue Rezepte finde ich bei Chefkoch und bei Thomann kaufe ich Saiten für meine Gitarre.<br>
+Meine Berührungspunkte mit der **KI** waren bis dahin minimal. Im Alltag nutzte ich bis dahin keine KI. Mein Alltagsbegleiter war Google. Und ehrlich gesagt, hatte ich keine Fragen an die KI. Mir fehlte bis dahin das Vorstellungsvermögen, wie ich KI sinnvoll für mich einsetzen konnte. Für die Wetterabfrage braucht es keine KI und die Öffnungszeiten vom nächsten Supermarkt zeigt die Karten-App an. Neue Rezepte finde ich bei Chefkoch und bei Thomann kaufe ich Saiten für meine Gitarre.<br>
 Aber mit diesem Projekt bot sich mir eine erste und gute Gelegenheit mich mit KI vertraut zu machen und zu lernen wie mir die KI hilfreich sein konnte bei meinem Vorhaben. Ich würde sehen welche Vor- und Nachteile mir das bringt. Ich würde sehen wie man mit KI arbeitet und ich würde mir auch endlich selbst einen Eindruck verschaffen. Ich erwähne das, weil die KI mir entscheidend geholfen hat mein Projekt bis zum aktuellen Stand umzusetzen. Ich kann vorweg nehmen, dass ich ziemlich begeistert bin. Ich habe schnell gelernt, dass meine Prompts entscheidend für eine gute Antwort sind. Ich habe mir alles ausführlich erklären lassen und bin über die Antworten zu vielen neuen Themen gekommen. Manchmal habe ich lange Diskussionen geführt um dann festzustellen, es ist besser etwas nicht zu machen. Ich habe auch festgestellt, dass KI sich gerne mal täuscht, im ersten Moment aber immer sehr überzeugt von Ihrem Vorschlag ist. Ich habe das berühmte Halluzinieren nachvollziehen können und gerlernt je mehr Infomation man zu Verfügung stellt, desto wahrscheinlicher wird eine gute Antwort. Definitiv ist es wichtig, jede Antwort kritisch zu hinterfragen, Belege einzufordern und zu prüfen. Mit Hilfe der KI näherte ich mich den Themen und erwarb ein Grundverständis. Mit der KI lernte ich NICHT tiefere Kenntnisse der Konfiguration verschiedener Dienste unter Linux. Die KI spuckt einen Terminal-Befehl aus, drei Zeilen lang und mit vielen Variablen, Optionen versehen ist und ich kopierte diese Befehle. Aber ich ließ mir immer ausführlich erklären warum und wofür eine Konfiguration oder ein Dienst nötig ist.<br>
 KI ist ein mächtiges Assistenz-System, mit dem man viel Lernen kann. Man kann aber auch einfach schnell sein und nicht hinterfragen, es wird schon irgendwie laufen. Das mag ich persönlich nicht. Ich fühle mich nicht wohl, wenn ich nicht grundlegend verstehe, was ich mache und mich nicht bewusst entscheide. Ich habe schnell festgestellt, dass es sich lohnt lange und ausführlich zu fragen. Die KI kennt keine Ungeduld und keine dummen Fragen!!! Andersherum war ich noch nie um dumme Fragen verlegen ;-)
 
@@ -192,7 +192,7 @@ Nextcloud Sicherheitsmaßnahmen<br>
 - Zwei-Faktor-Authentifizierung [noch nicht eingerichtet]
 - Admin-Konto: nur ich bin Admin und kann Einstellungen vornehmen und Berechtigungen vergeben.
 - Anmeldung: nach fünf fehlgeschlagenen Anmeldeversuchen wird die IP-Adresse für 24 Stunden gesperrt. Ich erhalte eine automatische Benachrichtigung über jeden fehlgeschlagenen Anmeldeversuch. Ein Skript ermittelt den Standort der IP-Adresse. Technisch sieht das so aus:<br>
-fehlgeschlagene Logins werden in nextcloud.log gespeichert.<br>
+fehlgeschlagene Logins werden als LOG-File gespeichert.<br>
 fail2ban-jail wertet die Einträge aus.<br>
 ein Cronjob läuft alle 10 Minuten:<br>
 Abfrage nach aktiven Sperren<br>
@@ -216,24 +216,88 @@ Aus zwei einfachen Gründen benötigt es ein Konzept für Backups.<br>
 1) Ich habe keine Lust wieder von vorne anzufangen, falls meine System-Platte abraucht!<br>
 2) Ich möchte ich meine Daten nicht verlieren!<br
 <br>
-Dieser Punkt ist in meiner Konfiguration noch nicht abgeschlossen und wird zukünftig weiter ausgebaut. Backups erstelle zwar regelmäsig, jedoch bis jetzt manuell. Ich nutze rsync über das Terminal.
-a) Ich erstelle regelmäßig komplette Abbilder der Systemfestplatte auf die eingehängte USB-Festplatte.<br>
-Ich behalte immer die letzten drei Abbilder. Ältere Abbilder lösche ich zur Zeit händisch. Ein manuelles Wieder-Einspielen habe ich bisher nicht getestet.
-sudo dd if=/dev/sda bs=4M conv=sync,noerror status=progress | gzip | sudo tee /mnt/USB-FESTPLATTE/system-image/system-$(date +%Y-%m-%d).img.gz > /dev/null
+**Backups**
 <br>
-status=progress ->Zeigt den Fortschritt des Kopierprozesses an<br>
+Zum Thema Backup habe ich folgendes Konzept für meinen Fall entwickelt. Der Server hat eine System-SSD und eine über USB angeschlossene Daten-HDD. Grob gesagt wird das System regelmäßig auf einen gesonderten Ordner auf der Daten HDD gesichtert. Und die komplette Daten HDD wird durch das Netzwerk auf einer weiteren Festplatte gesichert. Der ganze Prozess läuft mittlerweile automatisiert zu festen Zeiten ab. Ältere Backups werden nach einer definierten Regel aufbewahrt bzw. automatisch gelöscht. Insgesamt werden Backups über 24 Monate gespeichert. Wohlgemerkt meine ich damit die System-Backups. Die Daten werden immer nur so gesichert, wie sie auch aktuell auf dem Datenspeicher liegen. Im folgenden gehe ich auf ein paar Details ein. Im Detail sieht die Strategie also so aus:
+<br>
+### Stufe 1: Lokales Backup auf die USB-Festplatte
 
-b) Ich kopiere die Nextcloud-Festplatte regelmäßig 1:1 auf einen anderen Ordner im Netzwerk. Dahinter verbirgt sich eine Datenfestplatte, die an meinem Hauptrechner hängt.<br>
-sudo rsync -aHAX --info=progress2 /mnt/NEXTCLOUD-FESTPLATTE/ /mnt/NETZWERKORDNER/  <br>
-Die NEXTCLOUD-FESTPLATTE und NETZWERKORDER sind dauerhaft im System eingehängt. <br>
+Das lokale Backup sollte täglich folgende Inhalte sichern:
 
-c) Die Datenfestplatte am Hauptrechner wird regelmäßig 1:1 auf eine baugleiche Festplatte mit der gleichen Kapazität gespiegelt.
+- konsistenter Dump der Nextcloud-MariaDB-Datenbank
+- Docker-Compose-Dateien
+- Nginx-Konfiguration
+- Collabora-Konfiguration
+- Nextclouds config.php
+- Let's-Encrypt-Konfiguration
+- DDNS- und WOPI-Automatisierung
+- systemd-Dienste und Timer
+- das Backup-Skript selbst
+<br>
 
-Das mag aufwändig klingen und natürlich gehört so ein Prozess automatisiert. In meinem Fall gibt es verschiedene Gründe, warum das noch nicht so ist. 
-Kurz gesagt gibt es bei mir kein NAS auf dem zentral die Backups aller Geräte und Daten gesichert werden. Ich führe die Backups für all meine Geräte noch manuell durch und habe hierfür auch verschiedene Festplatten. Es ist ein über die Jahre gewachsenes, chaotisches System, das sich ständig erweitert hat.<br>
-Für den Home-Server sind das zwei Befehle die ich in das Terminal copy-paste einfüge. Der Aufwand ist für mich überschaubar, bis ich eine bessere Gesamtlösung für all meine Geräte im Haushalt habe. Das ist ein zukünftiges Projekt.
-Ein weiteres Argument für die Automatisierung möchte ich der Vollständigkeit halber nicht verschweigen. Regelmäßige Backups in kurzen Intervallen minimieren bei einem Schaden den Datenverlust. Ich bewege mich im privaten Rahmen und falls die USB-Festplatte des Server beschädigt wird, verliere ich im Zweifel Daten von einer Woche. In der Regel sind das Photos und die paar Daten, die man in einer Woche produziert. Das Risiko ist mir bewusst und damit wäre ein solcher Verlust kalkuliert und verschmerzbar.<br>
-1-2-3 Regel: Nach dieser Regel sollte ich noch ein Backup außer Haus haben. Das gibt es zur Zeit noch nicht. Ich habe Ideen dazu, wie sich das günstig und unkompliziert realiseren ließe und kann vielleicht in Zukunft darüber berichten.
+### Stufe 2: Netzwerkkopie auf den Hauptrechner
+
+Die gesamte USB-Festplatte sollte zweimal pro Woche auf einen Freigabe-Ordner des Hauptrechners kopiert werden:
+
+Ein Skript prüft vor Beginn immer:
+1. ob die lokale USB-Quellplatte korrekt eingehängt ist
+2. ob das Netzlaufwerk korrekt gemountet ist
+
+Ist der Hauptrechner ausgeschaltet schlägt das Backup fehl und eine Benachrichtigung wird ausgelöst.
+<br>
+
+## Aufbewahrung
+
+Um zu entscheiden was wie lange aufbewahrt wird, überlegte ich folgendes. Wie groß würden die Konfigurations-Backups sein und auf welche Gesamtgröße würde das hinaus laufen? Klar war sofort, dass ich die eigentlichen Daten nicht noch mit Zeitstempeln doppelt und dreifach speichern würde. Ich entschied mich für folgende Variante:
+
+Tägliche Sicherungen:
+14 Tage aufbewahren
+
+Monatssicherungen:
+erste erfolgreiche Sicherung eines Monats zusätzlich archivieren
+
+Monatssicherungen:
+24 Monate aufbewahren
+
+daraus ergeben sich diese Vorteile:
+- tägliche Wiederherstellung für die letzten zwei Wochen
+- monatlicher Rückgriff über zwei Jahre
+- überschaubare Speicherbedarf
+
+Zum Zeitpunkt der Einrichtung hatte eine vollständige Sicherung ungefähr folgende Größe:
+
+Komprimierter MariaDB-Dump: etwa 12 MB
+Konfigurationsarchiv: etwa 127 KB
+
+Bei unveränderter Größenordnung ergeben sich ungefähr:
+
+14 tägliche Sicherungen:  etwa 170 MB
+24 Monatssicherungen:     etwa 290 MB
+Gesamt:                   etwa 460 MB
+
+Selbst bei deutlich wachsender Datenbank bleibt der Speicherbedarf im Vergleich zu den produktiven Daten gering.
+
+**Praktische Umsetzung:**
+<br>
+Um eine saubere Dateistruktur zu erhalten, musste ich auf der Daten-HDD erst einige Änderungen durchführen. Ursprünglich war Nextcloud so konfiguriert, dass es die Daten-HDD komplett, also ab dem Root-Verzeichnis, für seine Verzeichnis-Strukturen nutzt. Füge ich in diese Struktur einen weiteren Ordner für Backups ein, beeinträchtigt das das System nicht unbedingt negativ, aber der Ordner wird eventuell in die Indizierung eingeschlossen. Sauber ist also eine Trennung. Dafür war nicht viel nötig. Ich habe also im Root-Verzeichnis schlicht einen Ordner für die Nextcloud-Daten erstellt und alle Daten von Nextcloud dorthin verschoben. Nextcloud selbst muss das natürlich auch wissen und die Konfig-Dateien entsprechend aktualisiert werden.
+
+Für die lokale Sicherung wurde ein Skript eingerichtet, das täglich einen konsistenten Dump der MariaDB-Datenbank erstellt. Dieser enthält die Konten, Freigaben, Dateizuordnungen und weiteren Nextcloud-Metadaten, jedoch nicht meine eigentlichen Benutzerdateien. Weitere Konfigurationen, die gesichert werden sind: 
+Docker-Compose-Dateien
+Nextcloud-Konfiguration
+Nginx-Konfiguration
+Collabora-Konfiguration
+TLS-Zertifikate
+DDNS- und WOPI-Konfiguration
+systemd-Dienste und Timer
+Backup-Skripte
+
+Die Ausführung erfolgt über einen systemd-Timer und Uptime Kume hilft bei der Überwachung.
+
+IN der zweiten Sicherungsstufe wird die gesamte USB-Festplatte auf einen Freigabe-Ordner auf meinen Hauptrechner kopiert. Ein Skript prüft ob die Festplatte eingehängt ist und ob der Freigabe-Ordner im Netzwerk erreichbar ist. Die Übertragung läuft über rsync. Die erste Übertragung dauert länger, weil alle Daten übertragen werden. Spätere Durchläufe sind inkrementell. Das heißt nur neue und geänderte Daten werden übertragen.
+
+Nextcloud bleibt während der Backups erreichbar und geht nicht in den Maintenance-Mode. Die Datenbank wird dennoch konsistent exportiert. Dateien, die während des Backups verändert werden, werden beim nächsten Backup übertragen. Ein vollständiges Backup würde eine Snapshot des Systems erfordern und Nextcloud in den Wartungsmodus zu versetzen. Das wäre natürlich möglich und würde sich nachts anbieten. Nachts läuft mein Rechner aber in der Regel nicht und damit würden diese Backups regelmäßig ins Leere laufen.
+
+1-2-3 Regel: Nach dieser Regel sollte ich noch ein Backup außer Haus haben. Das gibt es zur Zeit noch nicht. Ich habe Ideen dazu, wie sich das günstig und unkompliziert realiseren ließe und kann vielleicht in Zukunft darüber berichten. 
 
 
 ### Monitoring und Wartung
@@ -252,7 +316,7 @@ Wie bereits kurz beschrieben nutze ich Uptime Kuma für das Monitoring. Der Dien
 - Lokale KI-Nutzung nicht möglich! Hierfür braucht es zwingend moderne Hardware. 
 - Synchronisation ist sehr schnell. Geräteübergreifend sind Änderungen fast augenblicklich sichtbar.
 - Nextcloud läuft sehr stabil und zuverlässig. Noch keine Abstürze
-- NOIP. Der Dienst für die kostenlose Nutzung super. Einzig hatte ich mehrmals das Problem, dass mein Server nicht erreichbar war. Meine IP hatte sich geändert und irgendwas bei der Kommunikation zwischen Router und dem Dienst von NOIP lief schief. Schnelle Abhilfe war immer die IP manuell bei NOIP zu ändern. Im privaten Kontext erst Mal kein Problem, wenn man weiß wo das Problem liegt.
+- NOIP. Der Dienst für die kostenlose Nutzung super. Einzig hatte ich mehrmals das Problem, dass mein Server nicht erreichbar war. Meine IP hatte sich geändert und irgendwas bei der Kommunikation zwischen Router und dem Dienst von NOIP lief schief. Schnelle Abhilfe war immer die IP manuell bei NOIP zu ändern. Im privaten Kontext erst Mal kein Problem, wenn man weiß wo das Problem liegt. Zwischenzeitlich habe ich das aber umgestellt auf eine DE-Domain und der Server gleicht regelmäßig die IP ab um die Erreichbarkeit zu gewährleisten.
 
 
 ## DETAILS
