@@ -92,7 +92,15 @@ Ich komme nun zu einem grundlegenden Gedanken, der mich schon während all der �
 
 ### Netzwerkarchitektur
 
-Der Server mit der USB-Festplatte steht im Wohnzimmer und ist kabelgebunden an einen Mesh-Repeater angeschlossen, der wiederum das WLAN-Signal vom Router aus dem Stockwerk darunter verstärkt. Ins Internet geht es über den Router. Die interne IP-Adresse wird vom Router über DHCP vergeben. Der Router ist so eingestellt, dass er diese Adresse dauerhaft an den Server vergibt. Zugriff auf den Server sollen später ein Laptop, ein stationärer Rechner und vier Smartphones haben. Insgesamt vier Benutzer. Der Zugriff soll von außen erfolgen. Darauf gehe ich im Detail später ein. Auf dem Server wird ein Reverse Proxy laufen, der die Anfragen von außen an die entsprechenden Dienste auf dem Server weiterleiten wird. Auf dem Router wird eine Portweiterleitung eingerichtet, die auf den Server zeigt. Den Server selbst konfiguriere ich über das Terminal per SSH von meinem Hauptrechner über das lokale Netzwerk.
+### Netzwerkarchitektur
+
+Der Home-Server ist kabelgebunden in das lokale Netzwerk eingebunden. Die interne IP-Adresse wird über DHCP vom Router vergeben und ist dort dauerhaft für den Server reserviert.
+
+Mehrere Desktop- und Mobilgeräte greifen auf die Nextcloud-Instanz zu. Der Zugriff ist sowohl innerhalb des Heimnetzes als auch von außen möglich.
+
+Externe Anfragen erreichen zunächst den Router und werden über die erforderlichen Portfreigaben an einen Reverse Proxy auf dem Server weitergeleitet. Der Reverse Proxy nimmt die verschlüsselten HTTPS-Verbindungen entgegen und leitet die Anfragen abhängig von der verwendeten Adresse an den passenden Dienst weiter.
+
+Die Administration des Servers erfolgt innerhalb des lokalen Netzwerks über eine verschlüsselte SSH-Verbindung.
 
 [NETZWERKDIAGRAMM einfügen]
 
