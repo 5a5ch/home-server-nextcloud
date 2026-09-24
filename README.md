@@ -264,13 +264,32 @@ Eine zusätzliche Sicherungsstufe außerhalb des eigenen Standorts ist als zukü
 
 ### Monitoring und Wartung
 
-Wie bereits kurz beschrieben nutze ich Uptime Kuma für das Monitoring. Der Dienst läuft in einem Container in Docker. Folgende Monitore habe ich mir eingerichtet.
+Wie bereits kurz beschrieben, nutze ich Uptime Kuma für das Monitoring. Der Dienst läuft in einem eigenen Docker-Container und überwacht verschiedene Funktionen des Servers.
 
-- Benachrichtigung über fehlgeschlagene Anmeldeversuche inkl. Standort
-- Benachrichtigung falls sicherheitsrelevante Updates für Ubuntu verfügbar sind.
-- Benachrichtigung ob Container und Cronjob laufen
-- Benachrichtigung falls Nextcloud-Dienst nicht online/erreichbar
-- Benachrichtigung falls die Festplattenbelegung über 75% ansteigt.
+Folgende Bereiche werden aktuell überwacht:
+
+- fehlgeschlagene Anmeldeversuche und aktive Sperren
+- verfügbare sicherheitsrelevante Updates für Ubuntu
+- Erreichbarkeit der Nextcloud-Instanz
+- Status wichtiger Docker-Container
+- regelmäßige Ausführung der lokalen Backups
+- regelmäßige Ausführung der Netzwerksicherung
+- Belegung der angeschlossenen Datenträger
+
+Bei Problemen oder Statusänderungen kann Uptime Kuma eine Benachrichtigung über Telegram versenden. Dadurch muss ich nicht ständig selbst kontrollieren, ob die einzelnen Dienste und automatisierten Aufgaben ordnungsgemäß funktionieren.
+
+Die Überwachung ersetzt natürlich keine regelmäßige manuelle Kontrolle. Sie hilft aber dabei, Fehler frühzeitig zu erkennen. Das ist besonders bei Diensten und Aufgaben wichtig, die normalerweise unbemerkt im Hintergrund laufen.
+
+Zu den regelmäßigen Wartungsaufgaben gehören außerdem:
+
+- verfügbare Updates prüfen und einspielen
+- Funktionsfähigkeit der automatisierten Backups kontrollieren
+- Speicherplatz und Protokolle überprüfen
+- Docker-Container und verwendete Images aktualisieren
+- Erreichbarkeit der öffentlich angebotenen Dienste testen
+- Zertifikate und deren automatische Verlängerung kontrollieren
+
+Das Monitoring und die Wartung sind damit kein einmalig abgeschlossener Teil des Projekts, sondern gehören zum dauerhaften Betrieb des Servers.
 
 ### Probleme und Lösungen
 
