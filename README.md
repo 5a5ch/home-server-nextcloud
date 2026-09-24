@@ -230,11 +230,11 @@ Nextcloud bleibt während der Backups erreichbar und geht nicht in den Wartungsm
 
 Wie bereits kurz beschrieben nutze ich Uptime Kuma für das Monitoring. Der Dienst läuft in einem Container in Docker. Folgende Monitore habe ich mir eingerichtet.
 
-- - Benachrichtigung über fehlgeschlagene Anmeldeversuche inkl. Standort
+- Benachrichtigung über fehlgeschlagene Anmeldeversuche inkl. Standort
 - Benachrichtigung falls sicherheitsrelevante Updates für Ubuntu verfügbar sind.
-- - Benachrichtigung ob Container und Cronjob laufen
-- - Benachrichtigung falls Nextcloud-Dienst nicht online/erreichbar
-- - Benachrichtigung falls die Festplattenbelegung über 75% ansteigt.
+- Benachrichtigung ob Container und Cronjob laufen
+- Benachrichtigung falls Nextcloud-Dienst nicht online/erreichbar
+- Benachrichtigung falls die Festplattenbelegung über 75% ansteigt.
 
 ### Probleme und Lösungen
 
