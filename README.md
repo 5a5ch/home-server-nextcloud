@@ -115,42 +115,59 @@ Die Administration des Servers erfolgt innerhalb des lokalen Netzwerks über ein
 
 ### Nextcloud-Funktionen
 
-Nextcloud bietet verschiedene Funktionen und Dienste. Es gibt einen App-Store, der nützliche Erweiterungen bietet. Ich nutze aktuell:
+Nextcloud bietet verschiedene Funktionen und Dienste. Es gibt einen App-Store, der nützliche Erweiterungen bietet.
 
-- **Datei-Synchronisierung:** Dateien lassen sich über eine Weboberfläche oder eine App auf meinem Nextcloud-Benutzerkonto auf dem Home-Server ablegen. Die Nextcloud-Clients legen auch fest, welche Daten offline verfügbar sind und welche Daten auf dem Server bleiben. Damit behalte ich im Alltag meine Daten verfügbar auf dem Smartphone, Laptop und meinem Schreibtischrechner. Da ich auf dem Laptop sämtliche Daten in die Cloud synchronisiere, entsteht auf meinem Hauptrechner automatisch eine Sicherung neuer Daten, die auf dem Laptop anfallen. Ein praktischer Nebeneffekt, der natürlich nicht die regelmäßige Datensicherung ersetzt. Auf dem Smartphone gehe ich deutlich sparsamer mit Offline-Daten um. Hier ist es praktisch, regelmäßig den Cache zu leeren und über die Optionen sehe ich auf einen Blick, welche Dateien offline gespeichert sind. Das ist wichtig, um die Speicherbelegung des Smartphones im Griff zu behalten.
+Ich nutze aktuell:
 
-- **Benutzerverwaltung:** Als Nextcloud-Admin kann ich verschiedene Benutzerkonten mit Benutzerkonten anlegen und Berechtigungen vergeben. So hat jeder Benutzer seinen eigenen Bereich für Daten und Dienste. Untereinander sind Datei- und Ordnerfreigaben möglich.
-- **Freigaben:** Datei- und Ordnerfreigaben sind mit unterschiedlichen Rechten zwischen Benutzern möglich, aber auch öffentliche Freigaben sind machbar. Lesen, Erstellen, Ändern, Löschen, Weiterteilen sind die Rechte, die vergeben werden können.
-- **automatischer Fotoupload vom Smartphone:** Speicherplatz auf Smartphones ist teuer und begrenzt und bei uns in der Familie belegen Fotos immer einen Großteil des Speichers. Ist die Nextcloud-App auf dem Smartphone installiert, bietet die Fotos-App einen automatischen Upload der Foto- und Videomediathek an. Das bringt zwei Vorteile. Zum einen sind die Fotos direkt als Kopie gesichert und zum anderen kann ich auf dem Smartphone einfach und schnell Fotos löschen und Speicher freigeben.
+- **Dateisynchronisierung:** Dateien lassen sich über eine Weboberfläche oder eine App auf meinem Nextcloud-Benutzerkonto auf dem Home-Server ablegen. Die Nextcloud-Clients legen auch fest, welche Daten offline verfügbar sind und welche Daten auf dem Server bleiben. Damit sind meine Daten im Alltag auf verschiedenen Geräten verfügbar. Die Synchronisierung sorgt dafür, dass Änderungen geräteübergreifend schnell sichtbar werden. Ein praktischer Nebeneffekt, der natürlich nicht die regelmäßige Datensicherung ersetzt. Auf dem Smartphone gehe ich deutlich sparsamer mit Offline-Daten um. Hier ist es praktisch, regelmäßig den Cache zu leeren. Über die Optionen sehe ich auf einen Blick, welche Dateien offline gespeichert sind. Das ist wichtig, um die Speicherbelegung des Smartphones im Griff zu behalten.
 
-- **Notizen (im Test):** Notizen sind mein Alltagshelfer und ich mache mir ständig Notizen aller Art. Entsprechend ist die Verfügbarkeit sehr wichtig für mich. Mittlerweile habe ich alle meine Notizen nach Nextcloud umgezogen und nutze nur noch diesen Dienst.
+- **Benutzerverwaltung:** Als Nextcloud-Administrator kann ich verschiedene Benutzerkonten anlegen und Berechtigungen vergeben. So hat jeder Benutzer einen eigenen Bereich für Daten und Dienste. Untereinander sind Datei- und Ordnerfreigaben möglich.
 
-- **Passwort-Verwaltung (im Test):** Ich nutze generell einen Passwortmanager. Ohne diesen näher zu benennen, muss ich kaum betonen, dass die Sicherheit und die Funktion sehr, sehr wichtig sind. Bevor ich hier einen kompletten Umzug mache, werde ich den von Nextcloud angebotenen Dienst näher beleuchten und ausführlich testen. Das habe ich bis jetzt nicht getan. Prinzipiell ist die App am Handy installiert und über die Weboberfläche ist der Passwortmanager am PC zugänglich.
+- **Freigaben:** Datei- und Ordnerfreigaben sind mit unterschiedlichen Rechten zwischen Benutzern möglich. Auch öffentliche Freigaben sind machbar. Lesen, Erstellen, Ändern, Löschen und Weiterteilen sind die Rechte, die dabei vergeben werden können.
 
-- **Kontakte (im Test):** Von einem Umzug meiner Kontakte zu Nextcloud verspreche ich mir eine betriebssystemübergreifende Nutzung. Der Praxistest steht hier noch aus.
+- **Automatischer Fotoupload vom Smartphone:** Speicherplatz auf Smartphones ist teuer und begrenzt. Fotos und Videos belegen dabei häufig einen großen Teil des Speichers. Ist die Nextcloud-App auf dem Smartphone installiert, bietet sie einen automatischen Upload der Foto- und Videomediathek an. Das bringt zwei Vorteile: Zum einen steht eine zusätzliche Kopie der Aufnahmen zur Verfügung und zum anderen kann auf dem Smartphone Speicher freigegeben werden. Diese Funktion ersetzt jedoch kein eigenes Backup.
 
-- **Integriertes Office:** Mit Collabora bietet Nextcloud eine Office-Lösung, die auf dem Server als Anwendung läuft. Pluspunkt ist natürlich, dass es damit möglich ist, eine Vielzahl an Dokumenten von unterwegs zu lesen und zu bearbeiten. Auf dem Smartphone versuche ich das ehrlicherweise zu vermeiden. Ob die Office-Anwendungen mit MS Office oder dem Apple-Office mithalten können, welche Hürden die Kompatibilität mit sich bringt, kann ich bis jetzt nicht wirklich gut beurteilen. Für die einfachen Dinge funktioniert es gut.
+- **Notizen, im Test:** Notizen sind mein Alltagshelfer und ich mache mir ständig Notizen aller Art. Entsprechend ist die Verfügbarkeit sehr wichtig für mich. Mittlerweile habe ich meine Notizen nach Nextcloud umgezogen und nutze den Dienst regelmäßig.
 
-Zukünftig ist für mich interessant
+- **Passwortverwaltung, im Test:** Ich nutze generell einen Passwortmanager. Ohne diesen näher zu benennen, muss ich kaum betonen, dass Sicherheit und Zuverlässigkeit hier besonders wichtig sind. Bevor ich mich für einen vollständigen Umzug entscheide, werde ich den von Nextcloud angebotenen Dienst näher beleuchten und ausführlich testen.
 
-- **KI-Erweiterung/Integration**
+- **Kontakte, im Test:** Von einem Umzug meiner Kontakte zu Nextcloud verspreche ich mir eine betriebssystemübergreifende Nutzung. Der Praxistest steht hier noch aus.
+
+- **Integriertes Office:** Mit Collabora bietet Nextcloud eine Office-Lösung, die auf dem eigenen Server läuft. Ein Pluspunkt ist natürlich, dass es damit möglich ist, eine Vielzahl an Dokumenten von unterwegs zu lesen und zu bearbeiten. Auf dem Smartphone versuche ich das ehrlicherweise zu vermeiden. Ob die Office-Anwendungen mit Microsoft Office oder den Office-Anwendungen von Apple mithalten können und welche Hürden die Kompatibilität mit sich bringt, kann ich bisher noch nicht wirklich gut beurteilen. Für einfache Aufgaben funktioniert es gut.
+
+Zukünftig sind für mich außerdem interessant:
+
+- **KI-Erweiterung und -Integration**
 - **E-Mail-Server**
 
 ### Sicherheitsmaßnahmen
 
-Ja, das Thema Sicherheit ist das Wichtigste. Während Dienste mal nicht funktionieren dürfen oder irgendwelche nervigen Sync-Probleme mit ständigen Time-Out-Meldungen nerven können, sollte sicherheitstechnisch nichts schiefgehen, da es um meine persönlichen Daten geht. Das Thema KI und Sicherheit sollte man auch mit Vorsicht genießen. Nicht jede Empfehlung und Anleitung, die die KI vorschlägt, ist automatisch sicher! Ein Thema, das in Bezug auf Vibe-Coding für Anfänger, also das klassische Beispiel des jungen Unternehmers, der mit Vibe-Coding seine Internetpräsenz aufbaut und später stellt sich heraus, dass die Kundendatenbank offen im Netz lag. DSGVO-Horror-Szenario. An anderen Stellen lese ich, ein offener Port am Router wie es für meinen Home-Server nötig ist, ist generell ein Einfallstor und dort draußen scannen Bots ständig und suchen solche Tore.
+Ja, das Thema Sicherheit ist für mich eines der wichtigsten Themen bei diesem Projekt. Wenn ein Dienst einmal nicht erreichbar ist oder die Synchronisation nicht richtig funktioniert, ist das zwar ärgerlich, aber meistens lösbar. Sicherheitstechnisch sollte dagegen möglichst nichts schiefgehen, denn auf dem Server liegen persönliche Daten von mehreren Benutzern.
 
-Nextcloud Sicherheitsmaßnahmen
+Auch Empfehlungen einer KI müssen gerade bei diesem Thema mit Vorsicht betrachtet und zusätzlich geprüft werden. Nicht jede vorgeschlagene Konfiguration ist automatisch sicher oder für das eigene System geeignet. Deshalb habe ich versucht, Änderungen nicht einfach nur zu übernehmen, sondern zumindest grundlegend zu verstehen, welchen Zweck sie erfüllen und welche Auswirkungen sie haben können.
 
-- Zwei-Faktor-Authentifizierung [noch nicht eingerichtet]
-- Admin-Konto: nur ich bin Admin und kann Einstellungen vornehmen und Berechtigungen vergeben.
-- Anmeldung: nach fünf fehlgeschlagenen Anmeldeversuchen wird die IP-Adresse für 24 Stunden gesperrt. Ich erhalte eine automatische Benachrichtigung über jeden fehlgeschlagenen Anmeldeversuch. Ein Skript ermittelt den Standort der IP-Adresse. Technisch sieht das so aus:
-fehlgeschlagene Logins werden als LOG-File gespeichert. fail2ban-jail wertet die Einträge aus. ein Cronjob läuft alle 10 Minuten: Abfrage nach aktiven Sperren Zähler wird mit vorigem Durchlauf verglichen Nextcloud-Log wird ausgelesen IP fehlgeschlagener Logins wird ermittelt Geolokalisierung wird online abgefragt Status und Meldung an KUMA
+Mein Home-Server ist über das Internet erreichbar. Dafür werden nur die benötigten Ports an den Reverse Proxy weitergeleitet. Die einzelnen Dienste und Datenbanken sind nicht direkt aus dem Internet erreichbar. Der Zugriff auf Nextcloud und Collabora erfolgt verschlüsselt über HTTPS und gültige TLS-Zertifikate.
 
-- Zertifikate
-- Port 443, HTTPS
-- max. 5 Anmeldeversuche -> Sperrung der IP
-- Mit Uptime Kuma habe ich ein Tool entdeckt, das es ermöglicht, Regeln und Abfragen zu erstellen und diese zu überwachen. Es lassen sich Zugriffe und Anmeldeversuche überwachen. Sicherheitsrelevante Systemupdates müssen regelmäßig geprüft und eingespielt werden. Auch dabei hilft Kuma. Passwörter: Ich nutze einen Passwortmanager und lasse mir dort Passwörter generieren. Standardpasswörter verwende ich nicht, genauso wenig habe ich ein Passwort für mehrere Konten.
+Für Nextcloud und den Server habe ich unter anderem folgende Sicherheitsmaßnahmen eingerichtet:
+
+- Die Benutzerkonten verwenden individuelle und zufällig erzeugte Passwörter.
+- Für die Nextcloud-Konten ist eine Zwei-Faktor-Authentifizierung eingerichtet.
+- Nur mein eigenes Konto besitzt Administratorrechte.
+- Fehlgeschlagene Anmeldeversuche werden protokolliert und automatisch ausgewertet.
+- Auffällige IP-Adressen werden zeitweise gesperrt.
+- Über das Monitoring erhalte ich Benachrichtigungen über fehlgeschlagene Anmeldeversuche und aktive Sperren.
+- Sicherheitsrelevante Aktualisierungen für Ubuntu, Docker und die verwendeten Anwendungen werden regelmäßig geprüft und eingespielt.
+- Die Datenbank sowie interne Verwaltungsdienste sind nicht direkt über das Internet erreichbar.
+- Portainer und Uptime Kuma sind nur aus dem lokalen Netzwerk und von einem festgelegten Rechner aus erreichbar.
+- Backups werden automatisiert erstellt und ihr erfolgreicher Ablauf wird überwacht.
+
+Für die automatische Sperrung auffälliger Zugriffe nutze ich Fail2ban. Der Dienst wertet relevante Protokolle aus und kann IP-Adressen bei wiederholten fehlgeschlagenen Anmeldeversuchen vorübergehend blockieren. Ein zusätzliches Skript prüft die aktiven Sperren und übermittelt den jeweiligen Status an Uptime Kuma.
+
+Uptime Kuma übernimmt dabei einen Teil des Monitorings. Der Dienst überwacht unter anderem die Erreichbarkeit von Nextcloud, den Zustand wichtiger Container, verfügbare Sicherheitsupdates, die Festplattenbelegung und die Ausführung der automatisierten Backups. Bei Problemen erhalte ich eine Benachrichtigung über Telegram.
+
+Passwörter lasse ich durch einen Passwortmanager generieren. Standardpasswörter oder mehrfach verwendete Passwörter kommen nicht zum Einsatz. Zugangsdaten, API-Schlüssel und andere geheime Werte werden nicht direkt in öffentlich zugänglichen Skripten oder Dokumentationen gespeichert.
+
+Trotz dieser Maßnahmen bleibt das Thema Sicherheit ein fortlaufender Prozess. Neue Dienste, Updates und Änderungen an der Konfiguration können neue Risiken mit sich bringen. Deshalb gehört es für mich dazu, die Einstellungen regelmäßig zu überprüfen und das System nicht als irgendwann vollständig „fertig“ oder endgültig sicher zu betrachten.
 
 ### Backup- und Wiederherstellungskonzept
 
