@@ -171,77 +171,96 @@ Trotz dieser Maßnahmen bleibt das Thema Sicherheit ein fortlaufender Prozess. N
 
 ### Backup- und Wiederherstellungskonzept
 
-Aus zwei einfachen Gründen benötigt es ein Konzept für Backups.
-1. Ich habe keine Lust wieder von vorne anzufangen, falls meine Systemplatte abraucht!
-2. Ich möchte meine Daten nicht verlieren!<br
+Aus zwei einfachen Gründen benötigt es ein Konzept für Backups:
+
+1. Ich möchte das System nicht vollständig neu aufbauen müssen, falls die Systemplatte ausfällt.
+2. Ich möchte meine Daten nicht verlieren.
 
 #### Backups
 
-Zum Thema Backup habe ich folgendes Konzept für meinen Fall entwickelt. Der Server hat eine System-SSD und eine über USB angeschlossene Daten-HDD. Grob gesagt wird das System regelmäßig auf einen gesonderten Ordner auf der Daten-HDD gesichert. Und die komplette Daten-HDD wird über das Netzwerk auf einer weiteren Festplatte gesichert. Der ganze Prozess läuft mittlerweile automatisiert zu festen Zeiten ab. Ältere Backups werden nach einer definierten Regel aufbewahrt beziehungsweise automatisch gelöscht. Insgesamt werden Backups über 24 Monate gespeichert. Wohlgemerkt meine ich damit die Systembackups. Die Daten werden immer nur so gesichert, wie sie auch aktuell auf dem Datenspeicher liegen. Im Folgenden gehe ich auf ein paar Details ein. Im Detail sieht die Strategie also so aus:
+Zum Thema Backup habe ich für meinen Fall folgendes Konzept entwickelt. Der Server verwendet getrennte Laufwerke für das System und die produktiven Nextcloud-Daten.
 
-### Stufe 1: Lokales Backup auf die USB-Festplatte
+Das System und die wichtigsten Konfigurationen werden regelmäßig auf dem lokalen Datenträger gesichert. Zusätzlich wird der gesamte Datenbestand über das lokale Netzwerk auf einen weiteren Rechner übertragen.
 
-Das lokale Backup sollte täglich folgende Inhalte sichern:
+Der gesamte Prozess läuft mittlerweile automatisiert zu festen Zeiten ab. Ältere Backups werden nach einer definierten Regel aufbewahrt beziehungsweise automatisch gelöscht. Die monatlichen Sicherungsstände werden über einen Zeitraum von 24 Monaten gespeichert.
+
+Wohlgemerkt meine ich damit die Datenbank- und Konfigurationsbackups. Die eigentlichen Nextcloud-Dateien werden auf dem zweiten Speichersystem jeweils im aktuellen Stand vorgehalten.
+
+#### Stufe 1: Lokales Backup
+
+Das lokale Backup sichert täglich folgende Inhalte:
 
 - konsistenter Dump der Nextcloud-MariaDB-Datenbank
 - Docker-Compose-Dateien
 - Nginx-Konfiguration
 - Collabora-Konfiguration
-- Nextclouds config.php
+- Nextclouds `config.php`
 - Let's-Encrypt-Konfiguration
 - DDNS- und WOPI-Automatisierung
 - systemd-Dienste und Timer
-- das Backup-Skript selbst
+- Backup-Skripte
 
-### Stufe 2: Netzwerkkopie auf den Hauptrechner
+#### Stufe 2: Netzwerkkopie
 
-Die gesamte USB-Festplatte sollte zweimal pro Woche auf einen Freigabeordner des Hauptrechners kopiert werden:
+Der Datenbestand wird zweimal pro Woche auf eine Netzwerkfreigabe eines weiteren Rechners kopiert.
 
-Ein Skript prüft vor Beginn immer:
-1. ob die lokale USB-Quellplatte korrekt eingehängt ist
-2. ob das Netzlaufwerk korrekt gemountet ist
+Ein Skript prüft vor Beginn:
 
-Ist der Hauptrechner ausgeschaltet schlägt das Backup fehl und eine Benachrichtigung wird ausgelöst.
+1. ob der lokale Datenträger korrekt eingehängt ist
+2. ob die Netzwerkfreigabe erreichbar und korrekt eingebunden ist
+3. ob das Ziel beschreibbar ist
 
-## Aufbewahrung
+Ist das Sicherungsziel nicht erreichbar, wird der Vorgang abgebrochen und eine Benachrichtigung ausgelöst. Der Betrieb von Nextcloud wird dadurch nicht beeinträchtigt.
 
-Um zu entscheiden was wie lange aufbewahrt wird, überlegte ich folgendes. Wie groß würden die Konfigurations-Backups sein und auf welche Gesamtgröße würde das hinauslaufen? Klar war sofort, dass ich die eigentlichen Daten nicht noch mit Zeitstempeln doppelt und dreifach speichern würde. Ich entschied mich für folgende Variante:
+#### Aufbewahrung
 
-Tägliche Sicherungen: 14 Tage aufbewahren
+Ich entschied mich für folgende Aufbewahrungsstrategie:
 
-Monatssicherungen: erste erfolgreiche Sicherung eines Monats zusätzlich archivieren
+```text
+Tägliche Sicherungen:
+14 Tage
 
-Monatssicherungen: 24 Monate aufbewahren
+Monatssicherungen:
+Erste erfolgreiche Sicherung eines Monats zusätzlich archivieren
 
-daraus ergeben sich diese Vorteile:
+Aufbewahrung der Monatssicherungen:
+24 Monate
+```
 
-- tägliche Wiederherstellung für die letzten zwei Wochen
-- monatlicher Rückgriff über zwei Jahre
+Daraus ergeben sich folgende Vorteile:
+
+- tägliche Wiederherstellungspunkte für die letzten zwei Wochen
+- monatliche Wiederherstellungspunkte über zwei Jahre
 - überschaubarer Speicherbedarf
 
-Zum Zeitpunkt der Einrichtung hatte eine vollständige Sicherung ungefähr folgende Größe:
+Zum Zeitpunkt der Einrichtung benötigte ein vollständiger Sicherungssatz aus Datenbank-Dump und Konfigurationsarchiv deutlich weniger als 20 MB Speicherplatz.
 
-Komprimierter MariaDB-Dump: etwa 12 MB Konfigurationsarchiv: etwa 127 KB
+Bei der festgelegten Aufbewahrung ergibt sich daraus ungefähr:
 
-Bei unveränderter Größenordnung ergeben sich ungefähr:
+```text
+14 tägliche Sicherungen: rund 200 MB
+24 Monatssicherungen:    rund 350 MB
+Gesamt:                  deutlich unter 1 GB
+```
 
-14 tägliche Sicherungen:  etwa 170 MB 24 Monatssicherungen:     etwa 290 MB Gesamt:                   etwa 460 MB
-
-Selbst bei deutlich wachsender Datenbank bleibt der Speicherbedarf im Vergleich zu den produktiven Daten gering.
+Die tatsächliche Größe wird mit der Nutzung von Nextcloud und dem Wachstum der Datenbank zunehmen. Im Vergleich zu den produktiven Dateien bleibt der Speicherbedarf dieser Sicherungen aber voraussichtlich gering.
 
 #### Praktische Umsetzung
 
-Um eine saubere Dateistruktur zu erhalten, musste ich auf der Daten-HDD erst einige Änderungen durchführen. Ursprünglich war Nextcloud so konfiguriert, dass es die Daten-HDD komplett, also ab dem Root-Verzeichnis, für seine Verzeichnis-Strukturen nutzt. Füge ich in diese Struktur einen weiteren Ordner für Backups ein, beeinträchtigt das das System nicht unbedingt negativ, aber der Ordner wird eventuell in die Indizierung eingeschlossen. Sauber ist also eine Trennung. Dafür war nicht viel nötig. Ich habe also im Root-Verzeichnis schlicht einen Ordner für die Nextcloud-Daten erstellt und alle Daten von Nextcloud dorthin verschoben. Nextcloud selbst muss das natürlich auch wissen und die Konfigurationsdateien entsprechend aktualisiert werden.
+Um eine saubere Verzeichnisstruktur zu erhalten, wurden die produktiven Nextcloud-Daten von den Sicherungsverzeichnissen getrennt. Nextcloud verwendet damit nur den vorgesehenen Datenordner, während Datenbank-, Konfigurations- und Systembackups außerhalb dieses Verzeichnisses liegen.
 
-Für die lokale Sicherung wurde ein Skript eingerichtet, das täglich einen konsistenten Dump der MariaDB-Datenbank erstellt. Dieser enthält die Konten, Freigaben, Dateizuordnungen und weiteren Nextcloud-Metadaten, jedoch nicht meine eigentlichen Benutzerdateien. Weitere Konfigurationen, die gesichert werden, sind: Docker-Compose-Dateien Nextcloud-Konfiguration Nginx-Konfiguration Collabora-Konfiguration TLS-Zertifikate DDNS- und WOPI-Konfiguration systemd-Dienste und Timer Backup-Skripte
+Für die lokale Sicherung wurde ein Skript eingerichtet, das täglich einen konsistenten Dump der MariaDB-Datenbank erstellt. Dieser enthält unter anderem Konten, Freigaben, Dateizuordnungen und weitere Nextcloud-Metadaten, jedoch nicht die eigentlichen Benutzerdateien.
 
-Die Ausführung erfolgt über einen systemd-Timer und Uptime Kuma hilft bei der Überwachung.
+Zusätzlich werden die relevanten Konfigurationen in einem komprimierten Archiv gesichert. Die Ausführung erfolgt automatisiert über einen systemd-Timer. Uptime Kuma überwacht den Ablauf und meldet fehlgeschlagene oder ausgebliebene Sicherungen.
 
-In der zweiten Sicherungsstufe wird die gesamte USB-Festplatte auf einen Freigabeordner auf meinen Hauptrechner kopiert. Ein Skript prüft, ob die Festplatte eingehängt ist und ob der Freigabeordner im Netzwerk erreichbar ist. Die Übertragung läuft über rsync. Die erste Übertragung dauert länger, weil alle Daten übertragen werden. Spätere Durchläufe sind inkrementell. Das heißt nur neue und geänderte Daten werden übertragen.
+In der zweiten Sicherungsstufe wird der Datenbestand mit `rsync` auf die Netzwerkfreigabe übertragen. Der erste Lauf überträgt alle vorhandenen Dateien. Spätere Läufe sind inkrementell, sodass nur neue oder geänderte Dateien kopiert werden.
 
-Nextcloud bleibt während der Backups erreichbar und geht nicht in den Wartungsmodus. Die Datenbank wird dennoch konsistent exportiert. Dateien, die während des Backups verändert werden, werden beim nächsten Backup übertragen. Ein vollständiges Backup würde einen Snapshot des Systems erfordern oder das Versetzen von Nextcloud in den Wartungsmodus. Das wäre natürlich möglich und würde sich nachts anbieten. Nachts läuft mein Rechner aber in der Regel nicht und damit würden diese Backups regelmäßig ins Leere laufen.
+Nextcloud bleibt während der Backups erreichbar und wechselt nicht in den Wartungsmodus. Die Datenbank wird dennoch konsistent exportiert. Dateien, die während einer Netzwerksicherung verändert werden, werden beim nächsten Lauf erneut übertragen.
 
-1-2-3 Regel: Nach dieser Regel sollte ich noch ein Backup außer Haus haben. Das gibt es zurzeit noch nicht. Ich habe Ideen dazu, wie sich das günstig und unkompliziert realisieren ließe und kann vielleicht in Zukunft darüber berichten.
+#### 3-2-1-Regel
+
+Eine zusätzliche Sicherungsstufe außerhalb des eigenen Standorts ist als zukünftige Erweiterung vorgesehen. Damit soll das Backupkonzept langfristig an die 3-2-1-Regel angenähert werden.
+
 
 ### Monitoring und Wartung
 
