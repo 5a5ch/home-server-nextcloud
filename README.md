@@ -1,12 +1,12 @@
 # home-server-nextcloud
 
-Ich baue meinen eigenen Nextcloud-Server um meine Daten zu Hause zu behalten! Das war der Anfang und die Idee des Projekts. Ich habe beschlossen den Projektverlauf hier nachträglich zu dokumentieren und dabei vor allem auf meine Gedanken und Überlegungen zu den einzelnen Schritten einzugehen. Ich werde hier nicht viele kryptische Zeilen aus irgendwelchen Nano-Konfigurationsdateien einstellen, da ich selbst zu wenig davon verstehe. Es handelt sich also nicht um eine Anleitung, davon gibt es genug da draußen im Netz. Vielmehr geht es mir darum, meinen eigenen Lernprozess zum grundlegenden Verständnis darzustellen.
+Ich baue meinen eigenen Nextcloud-Server, um meine Daten zu Hause zu behalten! Das war der Anfang und die Idee des Projekts. Ich habe beschlossen, den Projektverlauf hier nachträglich zu dokumentieren und dabei vor allem auf meine Gedanken und Überlegungen zu den einzelnen Schritten einzugehen. Ich werde hier nicht viele kryptische Zeilen aus irgendwelchen Nano-Konfigurationsdateien einstellen, da ich selbst zu wenig davon verstehe. Es handelt sich also nicht um eine Anleitung, davon gibt es genug da draußen im Netz. Vielmehr geht es mir darum, meinen eigenen Lernprozess zum grundlegenden Verständnis darzustellen.
 
 ## Projektübersicht
 
 ### Ziele und Gedanken dazu
 
-Da ich meine Daten unterwegs immer gerne bei mir habe, nutze ich schon seit jeher Cloud-Speicher wie Dropbox, iCloud etc. Die Nachteile solcher Dienste sind der begrenzte Speicher und dass man nicht die absolute Hoheit über seine privaten Daten hat. Ich musste also immer abwägen, welche Daten ich wo speichere und wie ich möglichst effizient mit der Datenmenge umgehe. Größere Datenmengen aus Musik- und Videoproduktionen in der Cloud zu speichern, war aus Kapazitätsgründen immer problematisch. Praktische Dinge wie Fotos vom Smartphone zu synchronisieren beziehungsweise direkt auszulagern, ist ohne Abo bei irgendeinem Dienst ebenfalls nicht möglich. Es gibt also zahlreiche Gründe, dieses Problem zu lösen und meine Lösung hieß NEXTCLOUD auf einem eigenen Home-Server. Ich hatte bereits Erfahrungen mit Nextcloud gesammelt (ehemals ownCloud), das ich zuvor bereits bei einem Webhoster installiert und genutzt hatte. Auch aus dem Firmenkontext kannte ich die App. Außerdem bietet Nextcloud weitere nützliche Tools wie Passwortverwaltung, Kalender oder Notizen. Alles Dienste, die ich aktuell von anderen Anbietern nutze und die zu meinen unabdingbaren täglichen Werkzeugen gehören. Weitere Pluspunkte sind, dass Nextcloud ein europäisches, genauer gesagt ein deutsches Produkt ist und zusätzlich noch Open Source. Es gibt außerdem zahlreiche Dokumentationen und eine Community. Da Nextcloud-Instanzen mehrere Nutzer zulassen, schwebte mir auch vor, den Zugang für den Familienkreis zu ermöglichen, um beispielsweise eine automatische Foto-Synchronisation vom Smartphone zu ermöglichen. Hürden: Aus früheren kleinen Projekten war mir von Anfang an klar, dass das trotzdem nicht einfach sein würde, da ich kaum über Kenntnisse im Umgang mit Docker, Linux, Kommandozeile, Datenbanken, Sicherheit, Skripten verfüge. Das heißt, ich würde mich mit jedem Thema auseinandersetzen müssen, recherchieren, Codezeilen finden und anpassen und durch viel Trial and Error probieren müssen, um ein System aufzusetzen, das den Anforderungen genügt.
+Da ich meine Daten unterwegs immer gerne bei mir habe, nutze ich schon seit jeher Cloud-Speicher wie Dropbox, iCloud etc. Die Nachteile solcher Dienste sind der begrenzte Speicher und dass man nicht die absolute Hoheit über seine privaten Daten hat. Ich musste also immer abwägen, welche Daten ich wo speichere und wie ich möglichst effizient mit der Datenmenge umgehe. Größere Datenmengen aus Musik- und Videoproduktionen in der Cloud zu speichern, war aus Kapazitätsgründen immer problematisch. Praktische Dinge wie Fotos vom Smartphone zu synchronisieren beziehungsweise direkt auszulagern, sind ohne Abo bei irgendeinem Dienst ebenfalls nicht möglich. Es gibt also zahlreiche Gründe, dieses Problem zu lösen und meine Lösung hieß NEXTCLOUD auf einem eigenen Home-Server. Ich hatte bereits Erfahrungen mit Nextcloud gesammelt (ehemals ownCloud), das ich zuvor bereits bei einem Webhoster installiert und genutzt hatte. Auch aus dem Firmenkontext kannte ich die App. Außerdem bietet Nextcloud weitere nützliche Tools wie Passwortverwaltung, Kalender oder Notizen. Alles Dienste, die ich aktuell von anderen Anbietern nutze und die zu meinen unabdingbaren täglichen Werkzeugen gehören. Weitere Pluspunkte sind, dass Nextcloud ein europäisches, genauer gesagt ein deutsches Produkt ist und zusätzlich noch Open Source. Es gibt außerdem zahlreiche Dokumentationen und eine Community. Da Nextcloud-Instanzen mehrere Nutzer zulassen, schwebte mir auch vor, den Zugang für den Familienkreis zu ermöglichen, um beispielsweise eine automatische Foto-Synchronisation vom Smartphone zu ermöglichen. Hürden: Aus früheren kleinen Projekten war mir von Anfang an klar, dass das trotzdem nicht einfach sein würde, da ich kaum über Kenntnisse im Umgang mit Docker, Linux, Kommandozeile, Datenbanken, Sicherheit, Skripten verfüge. Das heißt, ich würde mich mit jedem Thema auseinandersetzen müssen, recherchieren, Codezeilen finden und anpassen und durch viel Trial and Error probieren müssen, um ein System aufzusetzen, das den Anforderungen genügt.
 
 ### Anforderungen
 
@@ -25,7 +25,7 @@ Ja, und welche Anforderungen hat so ein System überhaupt? Ich definiere also An
 
 ### Recherche und erste Schritte
 
-Ich begann also mit ersten Recherchen zu den verschiedenen Themen und las mich durch Artikel und Forenbeiträge. Ich nahm Suchbegriffe, tippte sie in die Suchmaschine und ließ mich von dort an treiben. Ich las über Nutzererfahrungen, Hardware-Empfehlungen und hoffte auch Komplettanleitungen, die mich später durch die Einrichtung führen sollten. Und wie das zu Beginn eines Projekts, von dem ich kaum Ahnung hatte, oft so ist, bekam ich nicht mehr Klarheit, sondern es taten sich immer neue Fragen auf und die Sache wurde erst einmal unübersichtlicher. Also beschloss ich einfach einmal loszulegen. Ich hatte noch einen alten Raspberry Pi 3B und Festplatten lagerten auch genug in meinen Schubladen. Dass die Hardware des Raspberry Pi für Nextcloud zu langsam ist, ist mir bekannt, aber das stört mich erst einmal nicht. Ich wollte erst einmal Erfahrung sammeln und mich so der Sache annähern. An dieser Stelle kürze ich etwas ab, da ich die Einleitung nicht unnötig verlängern möchte und nur das Nötigste erwähnen möchte. Mit dem Raspi habe ich grundlegend die Installation von Nextcloud zum Laufen bekommen und den Zugriff über das lokale Netzwerk. Es stellte sich allerdings sehr schnell raus, dass die Hardware komplett überfordert ist und das System extrem langsam läuft. Für einige Tests und zum Ausprobieren war das akzeptabel, aber für den späteren Betrieb weder brauchbar noch praktikabel.
+Ich begann also mit ersten Recherchen zu den verschiedenen Themen und las mich durch Artikel und Forenbeiträge. Ich nahm Suchbegriffe, tippte sie in die Suchmaschine und ließ mich von dort an treiben. Ich las über Nutzererfahrungen, Hardware-Empfehlungen und hoffte auch auf Komplettanleitungen, die mich später durch die Einrichtung führen sollten. Und wie das zu Beginn eines Projekts, von dem ich kaum Ahnung hatte, oft so ist, bekam ich nicht mehr Klarheit, sondern es taten sich immer neue Fragen auf und die Sache wurde erst einmal unübersichtlicher. Also beschloss ich einfach einmal loszulegen. Ich hatte noch einen alten Raspberry Pi 3B und Festplatten lagerten auch genug in meinen Schubladen. Dass die Hardware des Raspberry Pi für Nextcloud zu langsam ist, ist mir bekannt, aber das stört mich erst einmal nicht. Ich wollte erst einmal Erfahrung sammeln und mich so der Sache annähern. An dieser Stelle kürze ich etwas ab, da ich die Einleitung nicht unnötig verlängern möchte und nur das Nötigste erwähnen möchte. Mit dem Raspberry Pi habe ich die Installation von Nextcloud grundsätzlich zum Laufen bekommen und den Zugriff über das lokale Netzwerk. Es stellte sich allerdings sehr schnell heraus, dass die Hardware komplett überfordert ist und das System extrem langsam läuft. Für einige Tests und zum Ausprobieren war das akzeptabel, aber für den späteren Betrieb weder brauchbar noch praktikabel.
 
 ### Hardware und Software
 
@@ -33,41 +33,65 @@ Ich begann also mit ersten Recherchen zu den verschiedenen Themen und las mich d
 
 #### Welche Hardware benötige ich?
 
--> Es ist nicht die neueste Hardware nötig. Aus Tutorials, Forenbeiträgen und Artikeln geht klar hervor, dass ältere Hardware sich heute immer noch gut für ein Home-Server-Projekt eignet. Ich entschloss mich zuerst für einen gebrauchten Mac mini. Für 50 € fand ich bei Kleinanzeigen ein Modell aus 2013 mit einem i7-Quad-Core-Prozessor, 8 GB RAM und einer SSD. Leider stellte sich nach dem Kauf heraus, dass eine Neuinstallation von Ubuntu oder macOS nicht möglich ist, da das Gerät mit einem UEFI-Passwort versehen war, das ich nicht kannte und ein Neuaufsetzen des Betriebssystems verhinderte. Ich kontaktierte den Verkäufer, der mir aber glaubhaft versicherte, dass er davon nichts wusste und das Gerät selbst vor Jahren gebraucht gekauft hatte. Im normalen Betrieb wird dieses Passwort nicht abgefragt - deshalb wusste er nicht davon. Ich recherchierte also, wie ich diesen Passwortschutz umgehen könnte beziehungsweise ob ein vollständiger Werksreset möglich ist. In meinem Fall war das "leider" nicht möglich. Apple hat hier gut gearbeitet und   so soll es auch sein! Ich stieß bei meiner Recherche auf einige "Kaufmöglichkeiten", die versprachen, den Schutz auszuhebeln. Allerdings für einen      Preis jenseits von 100 €. Das war das Gerät nicht wert und mir erschienen die Angebote auch etwas dubios. Nachdem ich hier in eine Sackgasse kam, entschloss ich mich, die Einzelteile auszubauen und zu verkaufen, was mir auch gelang. RAM, SSD und Logicboard einzeln verkauft brachten mir ca. 45 €. Mein Verlust hielt sich in Grenzen.
+Es ist nicht die neueste Hardware nötig. Aus Tutorials, Forenbeiträgen und Artikeln geht klar hervor, dass ältere Hardware sich heute immer noch gut für ein Home-Server-Projekt eignet. Ich entschloss mich zuerst für einen gebrauchten Mac mini. Für 50 € fand ich bei Kleinanzeigen ein Modell aus dem Jahr 2013 mit einem i7-Quad-Core-Prozessor, 8 GB RAM und einer SSD. Leider stellte sich nach dem Kauf heraus, dass eine Neuinstallation von Ubuntu oder macOS nicht möglich ist, da das Gerät mit einem UEFI-Passwort versehen war, das ich nicht kannte und das ein Neuaufsetzen des Betriebssystems verhinderte. Ich kontaktierte den Verkäufer, der mir aber glaubhaft versicherte, dass er davon nichts wusste. Er hatte das Gerät selbst vor Jahren gebraucht gekauft. Im normalen Betrieb wird dieses Passwort nicht abgefragt - deshalb wusste er nicht davon. Ich recherchierte also, wie ich diesen Passwortschutz umgehen könnte beziehungsweise ob ein vollständiger Werksreset möglich ist. In meinem Fall war das "leider" nicht möglich. Apple hat hier gut gearbeitet und   so soll es auch sein! Ich stieß bei meiner Recherche auf einige "Kaufmöglichkeiten", die versprachen, den Schutz auszuhebeln. Allerdings für einen      Preis jenseits von 100 €. Das war das Gerät nicht wert und mir erschienen die Angebote auch etwas dubios. Nachdem ich hier in eine Sackgasse kam, entschloss ich mich, die Einzelteile auszubauen und zu verkaufen, was mir auch gelang. RAM, SSD und Logicboard einzeln verkauft brachten mir ca. 45 €. Mein Verlust hielt sich in Grenzen.
 
-Beim nächsten Anlauf suchte ich gezielt nach Thin Clients. Ich stieß auf ein Lenovo ThinkCentre für 35 € und handelte den Versand inklusive aus. Spezifikationen: Intel(R) Core(TM) i5-3470T CPU @ 2,90 GHz 8 GiB Arbeitsspeicher integrierte Grafikeinheit ohne SSD/HDD Ich setzte eine alte 120-GB-OCZ-Vertex ein und schon war die Hardware für das System bereit. Speicher: Ich habe eine Schublade voll mit Festplatten in verschiedenen Größen und entschied mich mit einer alten 1-TB-Platte in einem externen Gehäuse und über USB angeschlossen zu beginnen.
+Beim nächsten Anlauf suchte ich gezielt nach Thin Clients. Ich stieß auf ein Lenovo ThinkCentre für 35 € und handelte den Versand inklusive aus.
+
+**Spezifikationen:**
+
+- Intel Core i5-3470T mit 2,90 GHz
+- 8 GiB Arbeitsspeicher
+- integrierte Grafikeinheit
+- ohne SSD/HDD
+
+Ich setzte eine alte 120-GB-OCZ-Vertex ein und schon war die Hardware für das System bereit.
+
+**Speicher:** Ich habe eine Schublade voll mit Festplatten in verschiedenen Größen und entschied mich, mit einer alten 1-TB-Platte in einem externen, über USB angeschlossenen Gehäuse zu beginnen.
 
 #### Welche Anforderungen stellt die Software?
 
-Ich las überall, dass Linux generell ein wenig ressourcenhungriges System ist. Es wird stetig gewartet und bekommt Updates. Es ist frei. Also wählte ich Ubuntu ohne grafische Oberfläche. Docker und Nextcloud sollten der Hardware keine Probleme bereiten. Das hatte ich mehrmals im Netz abgefragt.
+Ich las überall, dass Linux generell nur wenige Ressourcen benötigt. Es wird stetig gewartet und bekommt Updates. Es ist frei. Also wählte ich Ubuntu ohne grafische Oberfläche. Docker und Nextcloud sollten der Hardware keine Probleme bereiten. Das hatte ich mehrmals im Netz abgefragt.
 
 #### Wie zukunftsfähig/erweiterungsfähig soll mein System sein?
 
-Zu dem Zeitpunkt hatte ich noch keine konkreten Zukunftspläne. Aber ich ging davon aus, dass sich neben Nextcloud sicher noch der eine oder andere Dienst installieren ließe. Erst mit den späteren Recherchen stieß ich auf weitere Inspirationen wie Smart Home, Pi-hole, E-Mail-Server. Für ein KI-Projekt, das ich in Zukunft irgendwann noch starten werde, ist die Hardware nicht brauchbar.
+Zu dem Zeitpunkt hatte ich noch keine konkreten Zukunftspläne. Aber ich ging davon aus, dass sich neben Nextcloud sicher noch der eine oder andere Dienst installieren ließe. Erst mit den späteren Recherchen stieß ich auf weitere Inspirationen wie Smart Home, Pi-hole und E-Mail-Server. Für ein KI-Projekt, das ich in Zukunft irgendwann noch starten werde, ist die Hardware nicht brauchbar.
 
 #### Welche laufenden Kosten entstehen durch den Stromverbrauch?
 
-Zunächst einmal stellte sich die Frage, wie man das überhaupt berechnet? Rechnet man mit annäherndem Leerlaufverbrauch? Unter Volllast wird das System eher nicht laufen. Finde ich überhaupt Werte für die CPU? Der Prozessor wird mit einer TDP von 35 Watt angegeben. Das ist natürlich erst einmal ein Wert, der sich schwer in Relation setzen lässt. Also befragte ich KI und ließ mir folgende Schätzung geben. Idle, keine Zugriffe ->	etwa 10–15 W Normalbetrieb mit Docker/Nextcloud -> etwa 12–20 W Kurzzeitige Lastspitzen -> etwa 25–40 W Dauerhafte Volllast	-> etwa 35–50 W
+Zunächst einmal stellte sich die Frage, wie man das überhaupt berechnet. Rechnet man mit annäherndem Leerlaufverbrauch? Unter Volllast wird das System eher nicht laufen. Finde ich überhaupt Werte für die CPU? Der Prozessor wird mit einer TDP von 35 Watt angegeben. Das ist natürlich erst einmal ein Wert, der sich schwer in Relation setzen lässt. Also befragte ich die KI und ließ mir folgende Schätzung geben:
 
-Ich nahm einen Wert von 15 W zwischen Idle und Normalbetrieb an. Hinzu kommt die 3,5" HDD, die in einer uralten ICY-Box steckt. Schätzungen der KI kamen je nach Zugriffshäufigkeit auf 4–10 Watt. Ich einigte mich mit mir auf die Mitte von 7 Watt.
+```text
+Leerlauf, keine Zugriffe:            etwa 10–15 W
+Normalbetrieb mit Docker/Nextcloud:  etwa 12–20 W
+Kurzzeitige Lastspitzen:             etwa 25–40 W
+Dauerhafte Volllast:                 etwa 35–50 W
+```
 
-Das errechnete ich: Jahresverbrauch: (0,015 kW + 0,007 kW) * 24 h * 365 * 0,30 €/kWh = 57,82 € Da ich ein Balkonkraftwerk habe, sollte der Stromverbrauch tagsüber größtenteils gedeckt sein. Und wenn man davon ausgeht, dass der Verbrauch nachts eher Richtung Idle geht, so sollten die Kosten in der Realität definitiv niedriger ausfallen. Ich habe mich mit der Frage des Stromverbrauchs eine ganze Zeit beschäftigt. Ich wollte definitiv KEINEN zusätzlichen größeren Verbraucher im Haushalt haben und bei der Hardware-Recherche muss man genau das immer abfragen. Denn die Softwareanforderungen lassen sich mit wirklich viel alter Hardware bedienen, aber alte CPUs sind aus verschiedenen Gründen nicht gerade stromsparend und die Jahresrechnung kann schnell um einen dreistelligen Betrag steigen. An der Stelle lohnt es sich zu rechnen. Denn moderne Hardware, also moderne CPUs, gerade Mobilprozessoren, sind für so ein Projekt ideal. Und damit komme ich zur nächsten Frage.
+Ich nahm einen Wert von 15 W zwischen Idle und Normalbetrieb an. Hinzu kommt die 3,5" HDD, die in einer uralten ICY-Box steckt. Schätzungen der KI kamen je nach Zugriffshäufigkeit auf 4–10 Watt. Für die weitere Berechnung nahm ich einen Mittelwert von 7 Watt an.
+
+Das errechnete ich:
+
+```text
+Jahresverbrauch: (0,015 kW + 0,007 kW) × 24 h × 365 × 0,30 €/kWh = 57,82 €
+```
+
+Da ich ein Balkonkraftwerk habe, sollte der Stromverbrauch tagsüber größtenteils gedeckt sein. Und wenn man davon ausgeht, dass der Verbrauch nachts eher Richtung Idle geht, so sollten die Kosten in der Realität definitiv niedriger ausfallen. Ich habe mich mit der Frage des Stromverbrauchs eine ganze Zeit beschäftigt. Ich wollte definitiv KEINEN zusätzlichen größeren Verbraucher im Haushalt haben und bei der Hardware-Recherche muss man genau das immer abfragen. Denn die Softwareanforderungen lassen sich mit wirklich viel alter Hardware bedienen, aber alte CPUs sind aus verschiedenen Gründen nicht gerade stromsparend und die Jahresrechnung kann schnell um einen dreistelligen Betrag steigen. An der Stelle lohnt es sich zu rechnen. Denn moderne Hardware, also moderne CPUs, gerade Mobilprozessoren, sind für so ein Projekt ideal. Und damit komme ich zur nächsten Frage.
 
 #### Welches Budget steht mir zur Verfügung?
 
-Ehrlich gesagt wollte ich nicht viel Geld ausgeben. Es ist in erster Linie ein Versuch, von dem ich nicht weiß, wie gut und zuverlässig alles laufen wird. Ich konnte zu Beginn nicht abschätzen, welche Hürden und Stolpersteine mich noch erwarten und ob das Ganze wirklich nachhaltig funktionieren wird. Die Kosten der Hardware habe ich ja oben schon erwähnt und dabei wollte ich es vorerst auch belassen. Für den Anfang: Keep it cheap! Sehe ich später, dass alles gut läuft, kann ich die Rechnung nochmal überdenken. Ein sparsames Gerät, das unter 5 Watt verbraucht und dazu eine SSD für Daten, die über USB mit Strom versorgt wird, würde die laufenden Stromkosten nochmal deutlich reduzieren, was sich über die Zeit aufrechnen kann.
+Ehrlich gesagt wollte ich nicht viel Geld ausgeben. Es ist in erster Linie ein Versuch, von dem ich nicht weiß, wie gut und zuverlässig alles laufen wird. Ich konnte zu Beginn nicht abschätzen, welche Hürden und Stolpersteine mich noch erwarten und ob das Ganze wirklich nachhaltig funktionieren wird. Die Kosten der Hardware habe ich oben bereits erwähnt und dabei wollte ich es vorerst auch belassen. Für den Anfang: Keep it cheap! Sehe ich später, dass alles gut läuft, kann ich die Rechnung noch einmal überdenken. Ein sparsames Gerät, das unter 5 Watt verbraucht und dazu eine SSD für Daten, die über USB mit Strom versorgt wird, würde die laufenden Stromkosten nochmal deutlich reduzieren, was sich über die Zeit aufrechnen kann.
 
 #### Welches OS nutze ich überhaupt?
 
-Vorweg: Ich habe mich für Ubuntu entschieden. Ubuntu ist frei. Es gibt regelmäßig Updates. Es braucht wenig Ressourcen und kann ohne GUI installiert werden. Es gibt bereits viele beispielhafte Projekte, die gut dokumentiert sind. Und es reizt mich Erfahrungen mit Linux zu sammeln. Ich habe mir aber vorher angeschaut, welche Möglichkeiten es gibt und für mich bewertet:
+Vorweg: Ich habe mich für Ubuntu entschieden. Ubuntu ist frei. Es gibt regelmäßig Updates. Es braucht wenig Ressourcen und kann ohne GUI installiert werden. Es gibt bereits viele beispielhafte Projekte, die gut dokumentiert sind. Und es reizt mich, Erfahrungen mit Linux zu sammeln. Ich habe mir aber vorher angeschaut, welche Möglichkeiten es gibt und für mich bewertet:
 
 - macOS: ein alter Mac mini wäre preisgünstig gewesen, es hätte aber Probleme mit einem aktuellen macOS früher oder später gegeben. Über OpenCore Legacy Patcher
 lässt sich bis Sequoia patchen. Dann ist aber Schluss, Tahoe läuft noch nicht. Außerdem fällt die Unterstützung für USB-A-Anschlüsse irgendwann weg. Ich hatte etwa vor einem Jahr einen iMac Late 2013 (i5 Quad-Core, 16 GB RAM, 1 GB GPU) auf Sequoia geupdatet und leider festgestellt, dass das System wirklich schwerfällig läuft. Zwei Gründe, die dagegen sprechen. Ein neueres Modell mit M-Prozessor wäre sicher ideal für das OS, aber nicht im Budget.
 
 - Windows 11: Mein erstes Bedenken: Windows ist von Haus aus sehr ressourcenhungrig und meine Hardware ist schon etwas älter. Vermutlich muss man lange
-und tief in das System eingreifen um unnötige Dienste dauerhaft abzuschalten um das System performanter und ressourcenschonender zu machen. Zweites Fragezeichen: Kompatibilität-Abfrage von Windows an die Hardware: Von Haus aus, ist so ein alter PC nicht mit den Anforderungen kompatibel. Mit dem Rufus Tool zur Erstellung eines Installationsmedium hätte ich das Problem vermutlich umgehen könnten. Kommen wir zu den Updates. Leider habe ich schon oft gehört dass Updates gerne mal vom Benutzer vorgenommene Einstellungen und Anpassungen überschreiben und den von Microsoft gewünschten Zustand wiederherstellen. Das fände ich ehrlich gesagt sehr unschön und so sehr ich mich auf das Projekt freue, möchte ich zukünftig aber nicht ständig fürchten, Einstellungen erneut und erneut machen zu müssen. Und zu guter Letzt bin ich überhaupt kein Freund von Microsofts Einstellung zum Umgang mit sogenannten Diagnose- und Nutzungsdaten. Schon allein die Tatsache Windows nicht ohne Microsoft-Konto nutzen zu können, widerstrebt mir. Windows schied also aus.
+und tief in das System eingreifen, um unnötige Dienste dauerhaft abzuschalten und das System performanter und ressourcenschonender zu machen. Zweites Fragezeichen: Kompatibilitätsprüfung von Windows an die Hardware: Von Haus aus ist so ein alter PC nicht mit den Anforderungen kompatibel. Mit dem Rufus-Tool zur Erstellung eines Installationsmediums hätte ich das Problem vermutlich umgehen können. Kommen wir zu den Updates. Leider habe ich schon oft gehört, dass Updates gerne mal vom Benutzer vorgenommene Einstellungen und Anpassungen überschreiben und den von Microsoft gewünschten Zustand wiederherstellen. Das fände ich ehrlich gesagt sehr unschön und so sehr ich mich auf das Projekt freue, möchte ich zukünftig aber nicht ständig fürchten, Einstellungen immer wieder vornehmen zu müssen. Und zu guter Letzt bin ich überhaupt kein Freund von Microsofts Einstellung zum Umgang mit sogenannten Diagnose- und Nutzungsdaten. Schon allein die Tatsache, Windows nicht ohne Microsoft-Konto nutzen zu können, widerstrebt mir. Windows schied also aus.
 
-- Raspberry Pi OS: Das OS ist eine Linux-Distribution, die speziell für den Raspberry Pi entwickelt ist. Es gibt sie mit und ohne GUI. Prinzipiell wäre das eine gute Wahl
+- Raspberry Pi OS: Das OS ist eine Linux-Distribution, die speziell für den Raspberry Pi entwickelt wurde. Es gibt sie mit und ohne GUI. Prinzipiell wäre das eine gute Wahl
 insbesondere in Kombination mit einem Modell 4 oder 5 des Raspberry Pi.
 
 #### Gibt es Empfehlungen aus Foren oder Artikeln?
@@ -84,7 +108,7 @@ Ziel ist es, Nextcloud zum Laufen zu bringen. Das ist auf vielen Wegen möglich.
 - Reverse Proxy
 - Kuma Monitoring
 
-Alle Applikationen zum Zeitpunkt der Installation in der aktuellen Version.
+Alle Anwendungen wurden in der zum Zeitpunkt der Installation aktuellen Version eingerichtet.
 
 #### Docker und Docker Compose
 
@@ -137,6 +161,7 @@ Die getrennte Installation von Nextcloud und Collabora wurde erst später einger
 Für die öffentliche Erreichbarkeit nutzte ich anfangs einen kostenlosen DynDNS-Dienst. Der Router übermittelte dabei regelmäßig die aktuelle öffentliche IP-Adresse. Da diese Aktualisierung nicht immer zuverlässig funktionierte, stellte ich später auf eine eigene Domain um.
 
 Die Aktualisierung der öffentlichen IP-Adresse übernimmt inzwischen der Server selbst. Ein regelmäßig ausgeführtes Skript prüft die aktuelle Adresse und übermittelt Änderungen automatisch an den DNS-Anbieter. Dadurch bleibt der Server auch nach einem Wechsel der öffentlichen IP-Adresse über seine Domain erreichbar.
+
 #### HTTPS-Zertifikate
 
 Da Nextcloud über das Internet erreichbar ist, soll die gesamte Kommunikation verschlüsselt über HTTPS erfolgen. Dafür benötigt der Server gültige TLS-Zertifikate. Diese bestätigen gegenüber dem Browser, dass die aufgerufene Adresse tatsächlich zum jeweiligen Server gehört, und ermöglichen die verschlüsselte Übertragung der Daten.
@@ -147,9 +172,25 @@ Nextcloud und Collabora sind über getrennte Adressen erreichbar, werden aber du
 
 Die Verlängerung der Zertifikate erfolgt automatisch. Da Certbot für die verwendete Prüfung vorübergehend den üblichen HTTP-Port benötigt, wird der Reverse Proxy während der Erneuerung kurz gestoppt und anschließend wieder gestartet. Der gesamte Vorgang läuft automatisiert zu einem festgelegten Zeitpunkt ab.
 
+#### Nextcloud Office, Collabora und WOPI
+
+Anfangs verwendete Nextcloud Office den integrierten CODE-Server. Später wurde Collabora in einen eigenen Docker-Container ausgelagert. Dadurch sind Nextcloud und die Office-Anwendung voneinander getrennt und können unabhängig verwaltet und aktualisiert werden.
+
+Die Kommunikation zwischen beiden Diensten erfolgt über die WOPI-Schnittstelle. Nextcloud verwaltet die Dateien und Berechtigungen, während Collabora die Dokumente im Browser öffnet und bearbeitet.
+
+Der Zugriff auf die WOPI-Schnittstelle ist auf die erwartete öffentliche IP-Adresse beschränkt. Da mein Internetanschluss keine dauerhaft feste IP-Adresse besitzt, wird die Zulassung bei einer Änderung automatisch zusammen mit dem dynamischen DNS aktualisiert.
+
+#### Protokollierung und Fehlersuche
+
+Bei der Einrichtung und im laufenden Betrieb treten immer wieder Fehlermeldungen auf. Meist lassen sich die Protokolldateien der betroffenen Dienste auslesen und die Ursachen dadurch eingrenzen. Bei der Auswertung und Fehlersuche unterstützt mich die KI maßgeblich. Es ist sehr hilfreich, mir den Prozess der Fehlersuche ausführlich erklären zu lassen. Dadurch erhalte ich grundlegende Einblicke in die Funktionsweise der einzelnen Dienste.
+
+Vor wichtigen Änderungen sichere ich die entsprechenden Dateien. Anschließend wird jede Änderung getestet, bevor der nächste Schritt folgt. Funktioniert eine Anpassung nicht, kann in der Regel der vorherige Stand wiederhergestellt werden.
+
+Diese kleinen Reparaturen sind teilweise recht zeitaufwendig. Die einzelnen Änderungen sind oft nur gering, die kontrollierte Fehlersuche und die anschließenden Tests können jedoch mehrere Schritte erfordern.
+
 ### Vorgehensweise bei Installation und Einrichtung
 
-Ich komme nun zu einem grundlegenden Gedanken, der mich schon während all der Überlegungen begleitet hat. Wie gehe ich die Sache an? Aus früheren Projekten weiß ich, dass auf mich eine Menge Recherche zukommt und dass mich viele der Themen beim Ausprobieren an den Rand der Verzweiflung bringen werden. Warum weiß ich das? Ich kenne mich schlicht nicht aus. Jeden Terminalbefehl, jede Zeile in einer Konfigurationsdatei, werde ich irgendwoher aus dem Netz kopieren, vielleicht leicht modifizieren und hoffen sie in meinem Fall das Richtige macht. Die Schwierigkeit ist hier, dass vermutlich keines der Programme oder der Dienste, die es zwingend zu installieren und zu konfigurieren gilt, mit einer GUI arbeitet auf der man alle Einstellungsmöglichkeiten an- und abhaken kann, wo noch ein schöner Hilfetext erscheint, wenn man mit der Maus darüberfährt. Alles passiert in der Kommandozeile oder in irgendeinem Texteditor und alles sieht wahnsinnig kryptisch aus. Bereits in der Vergangenheit habe ich Homepages in HTML "geschrieben" oder mir ein NAS auf dem Raspi eingerichtet. Bei einer Homepage ist es ein großes Puzzle. Ich suche mir passende Codeschnipsel, versuche zu verstehen was dort steht und kopiere sie mit leichten Anpassungen. Dann wundere ich mich, warum sie nicht funktionieren und probiere so lange herum bis es klappt. Ziemlich müßig und ehrlich gesagt nicht so effektiv. Ich habe natürlich grundlegend immer etwas dabei gelernt, gerade was die Funktionsweisen einer Sache, eines Codeschnipsels, eines Dienstes angeht, die detaillierte Vorgehensweise ist dabei aber nicht hängen geblieben. Meine Berührungspunkte mit der **KI** waren bis dahin minimal. Im Alltag nutzte ich bis dahin keine KI. Mein Alltagsbegleiter war Google. Und ehrlich gesagt, hatte ich keine Fragen an die KI. Mir fehlte bis dahin das Vorstellungsvermögen, wie ich KI sinnvoll für mich einsetzen konnte. Für die Wetterabfrage braucht es keine KI und die Öffnungszeiten des nächsten Supermarkts zeigt die Karten-App an. Neue Rezepte finde ich bei Chefkoch und bei Thomann kaufe ich Saiten für meine Gitarre. Aber mit diesem Projekt bot sich mir eine erste und gute Gelegenheit, mich mit KI vertraut zu machen und zu lernen, wie mir die KI hilfreich sein konnte bei meinem Vorhaben. Ich würde sehen, welche Vor- und Nachteile mir das bringt. Ich würde sehen wie man mit KI arbeitet und ich würde mir auch endlich selbst einen Eindruck verschaffen. Ich erwähne das, weil die KI mir entscheidend geholfen hat, mein Projekt bis zum aktuellen Stand umzusetzen. Ich kann vorwegnehmen, dass ich ziemlich begeistert bin. Ich habe schnell gelernt, dass meine Prompts entscheidend für eine gute Antwort sind. Ich habe mir alles ausführlich erklären lassen und bin über die Antworten zu vielen neuen Themen gekommen. Manchmal habe ich lange Diskussionen geführt, um dann festzustellen, es ist besser etwas nicht zu machen. Ich habe auch festgestellt, dass KI sich gerne mal täuscht, im ersten Moment aber immer sehr überzeugt von ihrem Vorschlag ist. Ich habe das berühmte Halluzinieren nachvollziehen können und gelernt: je mehr Informationen man zur Verfügung stellt, desto wahrscheinlicher wird eine gute Antwort. Definitiv ist es wichtig, jede Antwort kritisch zu hinterfragen, Belege einzufordern und zu prüfen. Mit Hilfe der KI näherte ich mich den Themen und erwarb ein Grundverständnis. Mit der KI lernte ich NICHT tiefere Kenntnisse der Konfiguration verschiedener Dienste unter Linux. Die KI spuckt einen Terminalbefehl aus, drei Zeilen lang und mit vielen Variablen, Optionen versehen ist und ich kopierte diese Befehle. Aber ich ließ mir immer ausführlich erklären, warum und wofür eine Konfiguration oder ein Dienst nötig ist. KI ist ein mächtiges Assistenzsystem, mit dem man viel lernen kann. Man kann aber auch einfach schnell sein und nicht hinterfragen, es wird schon irgendwie laufen. Das mag ich persönlich nicht. Ich fühle mich nicht wohl, wenn ich nicht grundlegend verstehe, was ich mache und mich nicht bewusst entscheide. Ich habe schnell festgestellt, dass es sich lohnt, lange und ausführlich zu fragen. Die KI kennt keine Ungeduld und keine dummen Fragen!!! Andersherum war ich noch nie um dumme Fragen verlegen ;-)
+Ich komme nun zu einem grundlegenden Gedanken, der mich schon während all der Überlegungen begleitet hat. Wie gehe ich die Sache an? Aus früheren Projekten weiß ich, dass auf mich eine Menge Recherche zukommt und dass mich viele der Themen beim Ausprobieren an den Rand der Verzweiflung bringen werden. Warum weiß ich das? Ich kenne mich schlicht nicht aus. Jeden Terminalbefehl und jede Zeile in einer Konfigurationsdatei werde ich irgendwoher aus dem Netz kopieren, vielleicht leicht modifizieren und hoffen, dass sie in meinem Fall das Richtige tut. Die Schwierigkeit ist hier, dass vermutlich keines der Programme oder der Dienste, die es zwingend zu installieren und zu konfigurieren gilt, mit einer GUI arbeitet, auf der man alle Einstellungsmöglichkeiten an- und abhaken kann, wo noch ein schöner Hilfetext erscheint, wenn man mit der Maus darüberfährt. Alles passiert in der Kommandozeile oder in irgendeinem Texteditor und alles sieht wahnsinnig kryptisch aus. Bereits in der Vergangenheit habe ich Homepages in HTML "geschrieben" oder mir ein NAS auf dem Raspi eingerichtet. Bei einer Homepage ist es ein großes Puzzle. Ich suche mir passende Codeschnipsel, versuche zu verstehen, was dort steht und kopiere sie mit leichten Anpassungen. Dann wundere ich mich, warum sie nicht funktionieren und probiere so lange herum, bis es klappt. Ziemlich müßig und ehrlich gesagt nicht so effektiv. Ich habe natürlich grundlegend immer etwas dabei gelernt, gerade was die Funktionsweisen einer Sache, eines Codeschnipsels, eines Dienstes angeht, die detaillierte Vorgehensweise ist dabei aber nicht hängen geblieben. Meine Berührungspunkte mit der **KI** waren bis dahin minimal. Im Alltag nutzte ich bis dahin keine KI. Mein Alltagsbegleiter war Google. Und ehrlich gesagt, hatte ich keine Fragen an die KI. Mir fehlte bis dahin das Vorstellungsvermögen, wie ich KI sinnvoll für mich einsetzen konnte. Für die Wetterabfrage braucht es keine KI und die Öffnungszeiten des nächsten Supermarkts zeigt die Karten-App an. Neue Rezepte finde ich bei Chefkoch und bei Thomann kaufe ich Saiten für meine Gitarre. Aber mit diesem Projekt bot sich mir eine erste und gute Gelegenheit, mich mit KI vertraut zu machen und zu lernen, wie mir die KI bei meinem Vorhaben helfen konnte. Ich würde sehen, welche Vor- und Nachteile mir das bringt. Ich würde sehen, wie man mit KI arbeitet und ich würde mir auch endlich selbst einen Eindruck verschaffen. Ich erwähne das, weil die KI mir entscheidend geholfen hat, mein Projekt bis zum aktuellen Stand umzusetzen. Ich kann vorwegnehmen, dass ich ziemlich begeistert bin. Ich habe schnell gelernt, dass meine Prompts entscheidend für eine gute Antwort sind. Ich habe mir alles ausführlich erklären lassen und bin über die Antworten zu vielen neuen Themen gekommen. Manchmal habe ich lange Diskussionen geführt, um dann festzustellen, dass es besser ist, etwas nicht zu machen. Ich habe auch festgestellt, dass KI sich gerne mal täuscht, im ersten Moment aber immer sehr überzeugt von ihrem Vorschlag ist. Ich habe das berühmte Halluzinieren nachvollziehen können und gelernt: Je mehr Informationen man zur Verfügung stellt, desto wahrscheinlicher wird eine gute Antwort. Definitiv ist es wichtig, jede Antwort kritisch zu hinterfragen, Belege einzufordern und zu prüfen. Mit Hilfe der KI näherte ich mich den Themen und erwarb ein Grundverständnis. Trotzdem habe ich dadurch nicht automatisch tiefere Kenntnisse über die Konfiguration der verschiedenen Dienste unter Linux erworben. Die KI gibt Terminalbefehle aus, die teilweise mehrere Zeilen lang und mit vielen Variablen und Optionen versehen sind. Diese Befehle kopierte ich anschließend. Aber ich ließ mir immer ausführlich erklären, warum und wofür eine Konfiguration oder ein Dienst nötig ist. KI ist ein mächtiges Assistenzsystem, mit dem man viel lernen kann. Man kann aber auch einfach schnell sein und nicht hinterfragen: Es wird schon irgendwie laufen. Das mag ich persönlich nicht. Ich fühle mich nicht wohl, wenn ich nicht grundlegend verstehe, was ich mache und mich nicht bewusst entscheide. Ich habe schnell festgestellt, dass es sich lohnt, lange und ausführlich zu fragen. Die KI kennt keine Ungeduld und keine dummen Fragen!!! Andersherum war ich noch nie um dumme Fragen verlegen ;-)
 
 ### Netzwerkarchitektur
 
@@ -161,9 +202,6 @@ Externe Anfragen erreichen zunächst den Router und werden über die erforderlic
 
 Die Administration des Servers erfolgt innerhalb des lokalen Netzwerks über eine verschlüsselte SSH-Verbindung.
 
-[NETZWERKDIAGRAMM einfügen]
-
-
 ### Nextcloud-Funktionen
 
 Nextcloud bietet verschiedene Funktionen und Dienste. Es gibt einen App-Store, der nützliche Erweiterungen bietet.
@@ -171,19 +209,12 @@ Nextcloud bietet verschiedene Funktionen und Dienste. Es gibt einen App-Store, d
 Ich nutze aktuell:
 
 - **Dateisynchronisierung:** Dateien lassen sich über eine Weboberfläche oder eine App auf meinem Nextcloud-Benutzerkonto auf dem Home-Server ablegen. Die Nextcloud-Clients legen auch fest, welche Daten offline verfügbar sind und welche Daten auf dem Server bleiben. Damit sind meine Daten im Alltag auf verschiedenen Geräten verfügbar. Die Synchronisierung sorgt dafür, dass Änderungen geräteübergreifend schnell sichtbar werden. Ein praktischer Nebeneffekt, der natürlich nicht die regelmäßige Datensicherung ersetzt. Auf dem Smartphone gehe ich deutlich sparsamer mit Offline-Daten um. Hier ist es praktisch, regelmäßig den Cache zu leeren. Über die Optionen sehe ich auf einen Blick, welche Dateien offline gespeichert sind. Das ist wichtig, um die Speicherbelegung des Smartphones im Griff zu behalten.
-
 - **Benutzerverwaltung:** Als Nextcloud-Administrator kann ich verschiedene Benutzerkonten anlegen und Berechtigungen vergeben. So hat jeder Benutzer einen eigenen Bereich für Daten und Dienste. Untereinander sind Datei- und Ordnerfreigaben möglich.
-
 - **Freigaben:** Datei- und Ordnerfreigaben sind mit unterschiedlichen Rechten zwischen Benutzern möglich. Auch öffentliche Freigaben sind machbar. Lesen, Erstellen, Ändern, Löschen und Weiterteilen sind die Rechte, die dabei vergeben werden können.
-
 - **Automatischer Fotoupload vom Smartphone:** Speicherplatz auf Smartphones ist teuer und begrenzt. Fotos und Videos belegen dabei häufig einen großen Teil des Speichers. Ist die Nextcloud-App auf dem Smartphone installiert, bietet sie einen automatischen Upload der Foto- und Videomediathek an. Das bringt zwei Vorteile: Zum einen steht eine zusätzliche Kopie der Aufnahmen zur Verfügung und zum anderen kann auf dem Smartphone Speicher freigegeben werden. Diese Funktion ersetzt jedoch kein eigenes Backup.
-
 - **Notizen, im Test:** Notizen sind mein Alltagshelfer und ich mache mir ständig Notizen aller Art. Entsprechend ist die Verfügbarkeit sehr wichtig für mich. Mittlerweile habe ich meine Notizen nach Nextcloud umgezogen und nutze den Dienst regelmäßig.
-
 - **Passwortverwaltung, im Test:** Ich nutze generell einen Passwortmanager. Ohne diesen näher zu benennen, muss ich kaum betonen, dass Sicherheit und Zuverlässigkeit hier besonders wichtig sind. Bevor ich mich für einen vollständigen Umzug entscheide, werde ich den von Nextcloud angebotenen Dienst näher beleuchten und ausführlich testen.
-
 - **Kontakte, im Test:** Von einem Umzug meiner Kontakte zu Nextcloud verspreche ich mir eine betriebssystemübergreifende Nutzung. Der Praxistest steht hier noch aus.
-
 - **Integriertes Office:** Mit Collabora bietet Nextcloud eine Office-Lösung, die auf dem eigenen Server läuft. Ein Pluspunkt ist natürlich, dass es damit möglich ist, eine Vielzahl an Dokumenten von unterwegs zu lesen und zu bearbeiten. Auf dem Smartphone versuche ich das ehrlicherweise zu vermeiden. Ob die Office-Anwendungen mit Microsoft Office oder den Office-Anwendungen von Apple mithalten können und welche Hürden die Kompatibilität mit sich bringt, kann ich bisher noch nicht wirklich gut beurteilen. Für einfache Aufgaben funktioniert es gut.
 
 Zukünftig sind für mich außerdem interessant:
@@ -267,7 +298,7 @@ Ist das Sicherungsziel nicht erreichbar, wird der Vorgang abgebrochen und eine B
 
 Ich entschied mich für folgende Aufbewahrungsstrategie:
 
-```
+```text
 Tägliche Sicherungen:
 14 Tage
 
@@ -312,7 +343,6 @@ Nextcloud bleibt während der Backups erreichbar und wechselt nicht in den Wartu
 
 Eine zusätzliche Sicherungsstufe außerhalb des eigenen Standorts ist als zukünftige Erweiterung vorgesehen. Damit soll das Backupkonzept langfristig an die 3-2-1-Regel angenähert werden.
 
-
 ### Monitoring und Wartung
 
 Wie bereits kurz beschrieben, nutze ich Uptime Kuma für das Monitoring. Der Dienst läuft in einem eigenen Docker-Container und überwacht verschiedene Funktionen des Servers.
@@ -342,29 +372,22 @@ Zu den regelmäßigen Wartungsaufgaben gehören außerdem:
 
 Das Monitoring und die Wartung sind damit kein einmalig abgeschlossener Teil des Projekts, sondern gehören zum dauerhaften Betrieb des Servers.
 
-### Probleme und Lösungen
+### Probleme, Lösungen und Erkenntnisse
 
-### Was ich dabei gelernt habe
+Ich dokumentiere dieses Projekt nachträglich und nicht zeitgleich mit der Einrichtung. Probleme gab es während der Umsetzung immer wieder. Das ist bei einem solchen Projekt selbstverständlich.
 
-### Mögliche zukünftige Erweiterungen
+Nachdem ich recht schnell festgestellt hatte, dass sich mit Hilfe von KI nahezu jede Frage und jedes Problem besprechen und letztendlich auch lösen lässt, bin ich deutlich beruhigter an die Sache herangegangen. Ich habe es bereits an anderer Stelle erwähnt: Normalerweise setzt man ein solches Projekt nicht einfach um, sondern liest sich durch viele Beiträge in Foren, übernimmt und verändert Ideen, probiert aus, scheitert und beginnt erneut. Das braucht Zeit, Geduld und eine gewisse Frustrationstoleranz.
+
+KI ist ein mächtiges Werkzeug, das die Grenzen des Machbaren für den Einzelnen deutlich verschiebt. Ich habe mir für jede Fragestellung Zeit genommen, verschiedene Möglichkeiten ausführlich diskutiert und mir die vorgeschlagenen Lösungen erklären lassen. Nicht jeder erste Vorschlag war richtig oder für mein System geeignet. Deshalb war es wichtig, Ausgaben und Fehlermeldungen zu prüfen, Rückfragen zu stellen und Änderungen schrittweise durchzuführen.
+
+Ich habe durch dieses Projekt definitiv viel gelernt und weiß heute deutlich besser, worauf es beim Betrieb eines eigenen Servers ankommt. Gleichzeitig muss ich zugeben, dass ich mir nicht jeden Befehl gemerkt habe und viele Aufgaben ohne Unterstützung nicht selbstständig ausführen könnte. Ohne diese Assistenz wäre der Zeitaufwand für mich allerdings sehr viel höher gewesen.
 
 ### Praktische Erfahrungen
 
-- Hardware ist schnell und ausreichend für die kleine Anzahl an Benutzern in der jetzigen Konfiguration
-- Lokale KI-Nutzung nicht möglich! Hierfür braucht es zwingend moderne Hardware.
-- Synchronisation ist sehr schnell. Geräteübergreifend sind Änderungen fast augenblicklich sichtbar.
-- Nextcloud läuft sehr stabil und zuverlässig. Noch keine Abstürze
-- No-IP. Der Dienst ist für die kostenlose Nutzung gut geeignet. Einzig hatte ich mehrmals das Problem, dass mein Server nicht erreichbar war. Meine IP hatte sich geändert und irgendwas bei der Kommunikation zwischen Router und dem Dienst von No-IP lief schief. Schnelle Abhilfe war immer die IP manuell bei No-IP zu ändern. Im privaten Kontext erst einmal kein Problem, wenn man weiß, wo die Ursache liegt. Zwischenzeitlich habe ich das aber umgestellt auf eine `.de`-Domain und der Server gleicht regelmäßig die IP-Adresse ab, um die Erreichbarkeit zu gewährleisten.
+Die verwendete Hardware ist für die aktuelle Anzahl an Benutzern und Diensten ausreichend. Nextcloud läuft stabil und zuverlässig, und auch die Synchronisation zwischen den verschiedenen Geräten funktioniert schnell. Änderungen sind in der Regel nahezu unmittelbar auf den anderen Geräten sichtbar.
 
-## DETAILS
-### SSH-Zugriff mit Schlüsseln
-### Benutzer- und Rechteverwaltung
-### Firewall-Konfiguration
-### Docker beziehungsweise Docker Compose
-### VPN oder Reverse Proxy
-### HTTPS-Zertifikate
-### automatische Updates
-### Backup nach dem 3-2-1-Prinzip
-### Wiederherstellung eines Backups getestet
-### Protokollierung und Fehlersuche
-# Monitoring von Speicherplatz und Systemzustand
+Für eine lokale KI-Nutzung ist die vorhandene Hardware dagegen nicht leistungsfähig genug. Dafür wäre insbesondere modernere Hardware mit deutlich mehr Rechenleistung erforderlich.
+
+Die öffentliche Erreichbarkeit wurde anfangs über einen kostenlosen DynDNS-Dienst realisiert. Grundsätzlich funktionierte dieser Dienst gut. Gelegentlich wurde eine geänderte öffentliche IP-Adresse jedoch nicht zuverlässig aktualisiert, wodurch der Server vorübergehend nicht erreichbar war. Inzwischen nutze ich eine eigene Domain. Die aktuelle öffentliche IP-Adresse wird regelmäßig vom Server geprüft und bei Bedarf automatisch beim DNS-Anbieter aktualisiert.
+
+Insgesamt läuft das System rund, ist alltagstauglich und bewährt sich zuverlässig. Einige **Routineaufgaben wie Wartung und Updates gehören nun ebenfalls zum Betrieb**, da ein Home-Server niemals ein abgeschlossenes Projekt ist. Diese Aufgaben vereinfache ich mir nach und nach, indem ich sie automatisiere.
